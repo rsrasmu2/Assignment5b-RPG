@@ -1,12 +1,11 @@
 package characters.races;
 
 public interface RaceBuilder {
-    void buildName();
+    RaceBuilder buildName();
 
-    void buildStartingHealth();
+    RaceBuilder buildStartingHealth();
 
-    void buildStartingMana();
+    RaceBuilder buildStartingMana();
 
     Race getRace();
-
 }

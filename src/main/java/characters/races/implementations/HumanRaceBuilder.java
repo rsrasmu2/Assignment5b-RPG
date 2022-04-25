@@ -11,18 +11,21 @@ public class HumanRaceBuilder implements RaceBuilder {
     }
 
     @Override
-    public void buildName() {
+    public RaceBuilder buildName() {
         race.setName("Human");
+        return this;
     }
 
     @Override
-    public void buildStartingHealth() {
+    public RaceBuilder buildStartingHealth() {
         race.setStartingHealth(8);
+        return this;
     }
 
     @Override
-    public void buildStartingMana() {
+    public RaceBuilder buildStartingMana() {
         race.setStartingMana(100);
+        return this;
     }
 
     @Override

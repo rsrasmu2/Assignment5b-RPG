@@ -11,18 +11,21 @@ public class OrcRaceBuilder implements RaceBuilder {
     }
 
     @Override
-    public void buildName() {
+    public RaceBuilder buildName() {
         race.setName("Orc");
+        return this;
     }
 
     @Override
-    public void buildStartingHealth() {
+    public RaceBuilder buildStartingHealth() {
         race.setStartingHealth(12);
+        return this;
     }
 
     @Override
-    public void buildStartingMana() {
+    public RaceBuilder buildStartingMana() {
         race.setStartingMana(0);
+        return this;
     }
 
     @Override

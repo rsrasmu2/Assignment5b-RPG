@@ -1,23 +1,23 @@
 characters/resources/CharacterResourceObserver.java
  characters.resources.CharacterResourceObserver
-Main.java
- Main
-characters/classes/CharacterClassType.java
- characters.classes.CharacterClassType
-characters/races/RaceType.java
- characters.races.RaceType
-characters/races/RacePlan.java
- characters.races.RacePlan
+characters/races/Race.java
+ characters.races.Race
 characters/resources/CharacterResource.java
  characters.resources.CharacterResource
 characters/races/implementations/DwarfRaceBuilder.java
  characters.races.implementations.DwarfRaceBuilder
+characters/classes/CharacterClassBuilder.java
+ characters.classes.CharacterClassBuilder
+characters/classes/implementations/FighterClassBuilder.java
+ characters.classes.implementations.FighterClassBuilder
+Main.java
+ Main
 characters/races/RaceBuilder.java
  characters.races.RaceBuilder
 characters/races/implementations/HumanRaceBuilder.java
  characters.races.implementations.HumanRaceBuilder
-characters/races/Race.java
- characters.races.Race
+characters/classes/implementations/ThiefClassBuilder.java
+ characters.classes.implementations.ThiefClassBuilder
 characters/races/implementations/OrcRaceBuilder.java
  characters.races.implementations.OrcRaceBuilder
 characters/Character.java
@@ -26,4 +26,5 @@ characters/races/implementations/ElfRaceBuilder.java
  characters.races.implementations.ElfRaceBuilder
 characters/classes/CharacterClass.java
  characters.classes.CharacterClass
- characters.classes.CharacterClass$1
+characters/classes/implementations/WizardClassBuilder.java
+ characters.classes.implementations.WizardClassBuilder

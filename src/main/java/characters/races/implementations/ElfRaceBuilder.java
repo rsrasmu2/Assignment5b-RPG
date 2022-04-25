@@ -11,18 +11,21 @@ public class ElfRaceBuilder implements RaceBuilder {
     }
 
     @Override
-    public void buildName() {
+    public RaceBuilder buildName() {
         race.setName("Elf");
+        return this;
     }
 
     @Override
-    public void buildStartingHealth() {
+    public RaceBuilder buildStartingHealth() {
         race.setStartingHealth(6);
+        return this;
     }
 
     @Override
-    public void buildStartingMana() {
+    public RaceBuilder buildStartingMana() {
         race.setStartingMana(200);
+        return this;
     }
 
     @Override

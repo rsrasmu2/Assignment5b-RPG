@@ -11,18 +11,21 @@ public class DwarfRaceBuilder implements RaceBuilder {
     }
 
     @Override
-    public void buildName() {
+    public RaceBuilder buildName() {
         race.setName("Dwarf");
+        return this;
     }
 
     @Override
-    public void buildStartingHealth() {
+    public RaceBuilder buildStartingHealth() {
         race.setStartingHealth(10);
+        return this;
     }
 
     @Override
-    public void buildStartingMana() {
+    public RaceBuilder buildStartingMana() {
         race.setStartingMana(50);
+        return this;
     }
 
     @Override
