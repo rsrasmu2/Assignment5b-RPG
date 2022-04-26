@@ -34,9 +34,9 @@ public class Player implements Targettable, Equipper, LevelObserver {
      * @param race the race of the character.
      * @param characterClass the class of the character.
      */
-    public Player(Race race, CharacterClass characterClass,
+    public Player(String name, Race race, CharacterClass characterClass,
                   CombatStats combatStats, Abilities abilities) {
-        name = "Player";
+        this.name = name;
         this.race = race;
         this.characterClass = characterClass;
         this.combatStats = combatStats;
@@ -79,6 +79,12 @@ public class Player implements Targettable, Equipper, LevelObserver {
         return inventory;
     }
 
+    /**
+     * Allows the Player to use an ability based on user input.
+     * @param opponent the opposing character.
+     * @param reader the BufferedReader used to parse user input.
+     * @throws IOException based on user input.
+     */
     public void act(Targettable opponent, BufferedReader reader) throws IOException {
         while (true) {
             System.out.println("Choose your ability:");

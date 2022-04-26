@@ -20,7 +20,7 @@ public class OrcRaceBuilder implements RaceBuilder {
 
     @Override
     public RaceBuilder buildStartingHealth() {
-        race.setStartingHealth(12);
+        race.setStartingHealth(22);
         return this;
     }
 

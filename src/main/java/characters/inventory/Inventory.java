@@ -9,6 +9,7 @@ public class Inventory {
 
     public Inventory(Equipper equipper) {
         equipment = new Equipment(equipper);
+        consumables = new Consumables();
     }
 
     public Equipment getEquipment() {

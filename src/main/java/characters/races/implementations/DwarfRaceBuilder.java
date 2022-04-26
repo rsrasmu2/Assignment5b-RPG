@@ -21,7 +21,7 @@ public class DwarfRaceBuilder implements RaceBuilder {
 
     @Override
     public RaceBuilder buildStartingHealth() {
-        race.setStartingHealth(10);
+        race.setStartingHealth(20);
         return this;
     }
 

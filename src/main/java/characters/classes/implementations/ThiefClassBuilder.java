@@ -7,10 +7,7 @@ import characters.resources.CharacterResource;
 import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
 import characters.stats.MultiplicativeModifier;
-import combat.Combat;
 import combat.abilities.Ability;
-import combat.abilities.Targettable;
-import combat.abilities.AbilityAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +30,7 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
 
     @Override
     public CharacterClassBuilder buildStartingHealth() {
-        characterClass.setStartingHealth(10);
+        characterClass.setStartingHealth(22);
         return this;
     }
 
@@ -51,6 +48,8 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
 
     @Override
     public CharacterClassBuilder buildStartingAbilities() {
+        int energyGeneration = 20;
+
         Ability attack = new Ability("Attack");
         attack.addAction((user, opponent) -> {
             int damage = Ability.calculateDamage(
@@ -59,6 +58,8 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
             opponent.getHealth().modifyCurrentValue(-damage);
             System.out.println(opponent.getName() + " took " + damage + " damage.");
             System.out.println(opponent.getName() + " " + opponent.getHealth().toString());
+            user.getPrimaryResource().modifyCurrentValue(energyGeneration);
+            System.out.println("Generated " + energyGeneration + " energy.");
         });
         startingAbilities.add(attack);
 
@@ -67,10 +68,12 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
             user.getCombatStats().getStat(CombatStatType.DEFENSE)
                 .addModifier(new MultiplicativeModifier(2.0, 1));
             System.out.println(user.getName() + " entered a defensive stance.");
+            user.getPrimaryResource().modifyCurrentValue(energyGeneration);
+            System.out.println("Generated " + energyGeneration + " energy.");
         });
         startingAbilities.add(defend);
 
-        int energyCost = 25;
+        int energyCost = 35;
         double damageModifier = 1.3;
         Ability sneakAttack = new Ability("Sneak Attack", energyCost);
         sneakAttack.addAction((user, opponent) -> {
@@ -82,6 +85,8 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
             System.out.println(user.getName() + " " + user.getPrimaryResource().toString());
             System.out.println(opponent.getName() + " took " + damage + " damage.");
             System.out.println(opponent.getName() + " " + opponent.getHealth().toString());
+            user.getPrimaryResource().modifyCurrentValue(energyGeneration);
+            System.out.println("Generated " + energyGeneration + " energy.");
         });
         startingAbilities.add(sneakAttack);
 

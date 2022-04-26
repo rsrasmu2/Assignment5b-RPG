@@ -61,10 +61,11 @@ public class Ability {
 
     @Override
     public String toString() {
-        String ret = name + ".";
+        String ret = name;
         if (cost != 0) {
             ret += " Cost: " + cost;
         }
+        ret += ".";
         return ret;
     }
 }

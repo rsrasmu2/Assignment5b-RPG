@@ -1,16 +1,15 @@
-characters/stats/CombatStatModifier.java
- characters.stats.CombatStatModifier
+combat/abilities/Abilities.java
+ combat.abilities.Abilities
 characters/resources/CharacterResourceObserver.java
  characters.resources.CharacterResourceObserver
-characters/inventory/EquipmentSlot.java
- characters.inventory.EquipmentSlot
+Main.java
+ Main
 items/Equipper.java
  items.Equipper
 items/Item.java
  items.Item
-characters/inventory/Equipment.java
- characters.inventory.Equipment
- characters.inventory.Equipment$1
+combat/abilities/Targettable.java
+ combat.abilities.Targettable
 characters/stats/MultiplicativeModifier.java
  characters.stats.MultiplicativeModifier
 items/Equippable.java
@@ -19,24 +18,28 @@ characters/stats/CombatStatType.java
  characters.stats.CombatStatType
 items/Consumable.java
  items.Consumable
-characters/races/implementations/OrcRaceBuilder.java
- characters.races.implementations.OrcRaceBuilder
 characters/inventory/Consumables.java
  characters.inventory.Consumables
+combat/abilities/AbilityAction.java
+ combat.abilities.AbilityAction
+characters/resources/CharacterResource.java
+ characters.resources.CharacterResource
 characters/stats/CombatStats.java
  characters.stats.CombatStats
 characters/levels/LevelObserver.java
  characters.levels.LevelObserver
-characters/races/implementations/DwarfRaceBuilder.java
- characters.races.implementations.DwarfRaceBuilder
-characters/inventory/Inventory.java
- characters.inventory.Inventory
+characters/levels/Level.java
+ characters.levels.Level
+characters/stats/CombatStatModifier.java
+ characters.stats.CombatStatModifier
+characters/monsters/MonsterBuilder.java
+ characters.monsters.MonsterBuilder
 characters/races/Race.java
  characters.races.Race
 characters/stats/AdditiveModifier.java
  characters.stats.AdditiveModifier
-characters/races/implementations/ElfRaceBuilder.java
- characters.races.implementations.ElfRaceBuilder
+characters/classes/CharacterClassBuilder.java
+ characters.classes.CharacterClassBuilder
 characters/stats/CombatStatModifierDuration.java
  characters.stats.CombatStatModifierDuration
 characters/stats/CombatStatObserver.java
@@ -45,39 +48,42 @@ characters/races/RaceBuilder.java
  characters.races.RaceBuilder
 characters/stats/CombatStat.java
  characters.stats.CombatStat
-characters/races/implementations/HumanRaceBuilder.java
- characters.races.implementations.HumanRaceBuilder
-characters/levels/Level.java
- characters.levels.Level
-characters/classes/CharacterClass.java
- characters.classes.CharacterClass
-characters/classes/CharacterClassBuilder.java
- characters.classes.CharacterClassBuilder
-characters/resources/CharacterResource.java
- characters.resources.CharacterResource
-combat/abilities/AbilityAction.java
- combat.abilities.AbilityAction
-combat/abilities/Targettable.java
- combat.abilities.Targettable
-combat/Combat.java
- combat.Combat
-combat/abilities/Abilities.java
- combat.abilities.Abilities
-characters/classes/implementations/FighterClassBuilder.java
- characters.classes.implementations.FighterClassBuilder
-combat/abilities/monster/DefendAbility.java
- combat.abilities.monster.DefendAbility
-Main.java
- Main
 characters/Player.java
  characters.Player
-combat/abilities/Ability.java
- combat.abilities.Ability
-characters/classes/implementations/ThiefClassBuilder.java
- characters.classes.implementations.ThiefClassBuilder
-characters/Monster.java
- characters.Monster
+characters/inventory/EquipmentSlot.java
+ characters.inventory.EquipmentSlot
+characters/inventory/Inventory.java
+ characters.inventory.Inventory
+characters/inventory/Equipment.java
+ characters.inventory.Equipment
+ characters.inventory.Equipment$1
+combat/abilities/monster/DefendAbility.java
+ combat.abilities.monster.DefendAbility
+characters/classes/CharacterClass.java
+ characters.classes.CharacterClass
 combat/abilities/monster/AttackAbility.java
  combat.abilities.monster.AttackAbility
+combat/Combat.java
+ combat.Combat
+combat/abilities/Ability.java
+ combat.abilities.Ability
+characters/monsters/Monster.java
+ characters.monsters.Monster
+characters/monsters/implementations/GoblinMonsterBuilder.java
+ characters.monsters.implementations.GoblinMonsterBuilder
+characters/races/implementations/DwarfRaceBuilder.java
+ characters.races.implementations.DwarfRaceBuilder
+characters/classes/implementations/FighterClassBuilder.java
+ characters.classes.implementations.FighterClassBuilder
+characters/races/implementations/HumanRaceBuilder.java
+ characters.races.implementations.HumanRaceBuilder
+characters/races/implementations/OrcRaceBuilder.java
+ characters.races.implementations.OrcRaceBuilder
+characters/races/implementations/ElfRaceBuilder.java
+ characters.races.implementations.ElfRaceBuilder
+characters/classes/implementations/ThiefClassBuilder.java
+ characters.classes.implementations.ThiefClassBuilder
+Game.java
+ Game
 characters/classes/implementations/WizardClassBuilder.java
  characters.classes.implementations.WizardClassBuilder

@@ -7,14 +7,10 @@ import characters.resources.CharacterResource;
 import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
 import characters.stats.MultiplicativeModifier;
-import combat.Combat;
 import combat.abilities.Ability;
-import combat.abilities.Targettable;
-import combat.abilities.AbilityAction;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class FighterClassBuilder implements CharacterClassBuilder {
     private CharacterClass characterClass;
@@ -34,7 +30,7 @@ public class FighterClassBuilder implements CharacterClassBuilder {
 
     @Override
     public CharacterClassBuilder buildStartingHealth() {
-        characterClass.setStartingHealth(12);
+        characterClass.setStartingHealth(26);
         return this;
     }
 
@@ -57,8 +53,8 @@ public class FighterClassBuilder implements CharacterClassBuilder {
         attack.addAction((user, opponent) -> {
             int rageGain = 10;
             int damage = Ability.calculateDamage(
-                    (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue()),
-                    opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
+                (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue()),
+                opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
             opponent.getHealth().modifyCurrentValue(-damage);
             user.getPrimaryResource().modifyCurrentValue(rageGain);
             System.out.println(opponent.getName() + " took " + damage + " damage.");
@@ -80,8 +76,8 @@ public class FighterClassBuilder implements CharacterClassBuilder {
         Ability powerAttack = new Ability("PowerAttack", rageCost);
         powerAttack.addAction((user, opponent) -> {
             int damage = Ability.calculateDamage(
-                    (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * damageModifier),
-                    opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
+                (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * damageModifier),
+                opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
             opponent.getHealth().modifyCurrentValue(-damage);
             System.out.println(user.getName() + " spent " + rageCost + " rage.");
             System.out.println(user.getName() + " " + user.getPrimaryResource().toString());

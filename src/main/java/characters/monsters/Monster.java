@@ -1,4 +1,4 @@
-package characters;
+package characters.monsters;
 
 import characters.resources.CharacterResource;
 import characters.stats.CombatStats;
@@ -20,12 +20,8 @@ public class Monster implements Targettable {
 
     private Random rand;
 
-    public Monster(String name, int startingHealth, CombatStats combatStats, Abilities abilities) {
-        this.name = name;
-        health = new CharacterResource("Health", startingHealth);
+    public Monster() {
         primaryResource = new CharacterResource("None", 0);
-        this.combatStats = combatStats;
-        this.abilities = abilities;
         rand = new Random();
     }
 
@@ -33,8 +29,16 @@ public class Monster implements Targettable {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public CharacterResource getHealth() {
         return health;
+    }
+
+    public void setHealth(CharacterResource health) {
+        this.health = health;
     }
 
     @Override
@@ -46,8 +50,21 @@ public class Monster implements Targettable {
         return combatStats;
     }
 
+    public void setCombatStats(CombatStats combatStats) {
+        this.combatStats = combatStats;
+    }
+
+    public void setAbilities(Abilities abilities) {
+        this.abilities = abilities;
+    }
+
+    /**
+     * Allows the Monster to use an ability.
+     * @param opponent the opposing character.
+     */
     public void act(Targettable opponent) {
-        Ability abilityToUse = abilities.getAbilities().get(rand.nextInt(abilities.getAbilities().size()));
+        Ability abilityToUse = abilities.getAbilities()
+                .get(rand.nextInt(abilities.getAbilities().size()));
         System.out.println("The monster used " + abilityToUse.getName());
         abilityToUse.execute(this, opponent);
     }

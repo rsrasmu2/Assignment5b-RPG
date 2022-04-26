@@ -7,10 +7,7 @@ import characters.resources.CharacterResource;
 import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
 import characters.stats.MultiplicativeModifier;
-import combat.Combat;
 import combat.abilities.Ability;
-import combat.abilities.Targettable;
-import combat.abilities.AbilityAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +30,7 @@ public class WizardClassBuilder implements CharacterClassBuilder {
 
     @Override
     public CharacterClassBuilder buildStartingHealth() {
-        characterClass.setStartingHealth(8);
+        characterClass.setStartingHealth(18);
         return this;
     }
 
@@ -55,8 +52,8 @@ public class WizardClassBuilder implements CharacterClassBuilder {
         Ability attack = new Ability("Attack");
         attack.addAction((user, opponent) -> {
             int damage = Ability.calculateDamage(
-                    (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue()),
-                    opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
+                (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue()),
+                opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
             opponent.getHealth().modifyCurrentValue(-damage);
         });
         startingAbilities.add(attack);

@@ -5,6 +5,9 @@ import combat.Combat;
 import combat.abilities.Ability;
 
 public class AttackAbility extends Ability {
+    /**
+     * Creates a new AttackAbility
+     */
     public AttackAbility() {
         super("Attack");
         addAction(((user, opponent) -> {

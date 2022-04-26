@@ -1,7 +1,7 @@
 package combat;
 
-import characters.Monster;
 import characters.Player;
+import characters.monsters.Monster;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,6 +18,11 @@ public class Combat {
         this.monster = monster;
     }
 
+    /**
+     * Begins this combat encounter.
+     * @param reader the BufferedReader used to parse player input.
+     * @throws IOException the BufferedReader's input
+     */
     public void begin(BufferedReader reader) throws IOException {
         System.out.println("Combat has begun.\n----------");
         while (true) {
@@ -34,6 +39,11 @@ public class Combat {
         }
     }
 
+    /**
+     * Plays a single turn for both the player and the monster.
+     * @param reader the BufferedReader used to parse player input.
+     * @throws IOException the BufferedReader's input.
+     */
     private void tick(BufferedReader reader) throws IOException {
         player.tick();
         if (checkWinCondition()) {

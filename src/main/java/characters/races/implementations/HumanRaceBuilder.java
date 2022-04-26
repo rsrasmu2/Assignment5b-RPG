@@ -20,7 +20,7 @@ public class HumanRaceBuilder implements RaceBuilder {
 
     @Override
     public RaceBuilder buildStartingHealth() {
-        race.setStartingHealth(8);
+        race.setStartingHealth(18);
         return this;
     }
 

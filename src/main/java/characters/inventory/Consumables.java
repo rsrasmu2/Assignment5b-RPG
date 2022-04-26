@@ -2,6 +2,7 @@ package characters.inventory;
 
 import items.Consumable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Consumables {
@@ -13,6 +14,10 @@ public class Consumables {
 
     public void removeConsumable(Consumable consumable) {
         consumables.remove(consumable);
+    }
+
+    public Consumables() {
+        consumables = new ArrayList();
     }
 
     public void use(int index) {

@@ -20,7 +20,7 @@ public class ElfRaceBuilder implements RaceBuilder {
 
     @Override
     public RaceBuilder buildStartingHealth() {
-        race.setStartingHealth(6);
+        race.setStartingHealth(16);
         return this;
     }
 

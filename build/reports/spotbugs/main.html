@@ -85,7 +85,9 @@
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\inventory\Inventory.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\levels\Level.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\levels\LevelObserver.class</li>
-         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\Monster.class</li>
+         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\monsters\implementations\GoblinMonsterBuilder.class</li>
+         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\monsters\Monster.class</li>
+         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\monsters\MonsterBuilder.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\Player.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\races\implementations\DwarfRaceBuilder.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\races\implementations\ElfRaceBuilder.class</li>
@@ -107,14 +109,14 @@
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\combat\abilities\Ability.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\combat\abilities\AbilityAction.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\combat\abilities\monster\AttackAbility.class</li>
+         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\combat\abilities\monster\DefendAbility.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\combat\abilities\Targettable.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\combat\Combat.class</li>
-         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\combat\Combatant.class</li>
+         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\Game.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\items\Consumable.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\items\Equippable.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\items\Equipper.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\items\Item.class</li>
-         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\Main$1.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\Main.class</li>
       </ul>
       <p>
@@ -122,9 +124,9 @@
          <br/>
       </p>
       <h2>Metrics</h2>
-      <p>982 lines of code analyzed,
-	in 43 classes, 
-	in 14 packages.</p>
+      <p>1182 lines of code analyzed,
+	in 45 classes, 
+	in 16 packages.</p>
       <table width="500" cellpadding="5" cellspacing="2">
          <tr class="tableheader">
             <th align="left">Metric</th>
@@ -133,23 +135,23 @@
          </tr>
          <tr class="tablerow0">
             <td>High Priority Warnings</td>
-            <td align="right">1</td>
-            <td align="right">1.02</td>
+            <td align="right"/>
+            <td align="right">0.00</td>
          </tr>
          <tr class="tablerow1">
             <td>Medium Priority Warnings</td>
-            <td align="right">7</td>
-            <td align="right">7.13</td>
+            <td align="right"/>
+            <td align="right">0.00</td>
          </tr>
          <tr class="$totalClass">
             <td>
                <b>Total Warnings</b>
             </td>
             <td align="right">
-               <b>8</b>
+               <b>0</b>
             </td>
             <td align="right">
-               <b>8.15</b>
+               <b>0.00</b>
             </td>
          </tr>
       </table>
@@ -163,15 +165,6 @@
       <h2>Contents</h2>
       <ul>
          <li>
-            <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
-         </li>
-         <li>
-            <a href="#Warnings_I18N">Internationalization Warnings</a>
-         </li>
-         <li>
-            <a href="#Warnings_STYLE">Dodgy code Warnings</a>
-         </li>
-         <li>
             <a href="#Details">Details</a>
          </li>
       </ul>
@@ -183,208 +176,17 @@
          </tr>
          <tr class="tablerow0">
             <td>
-               <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
-            </td>
-            <td align="right">5</td>
-         </tr>
-         <tr class="tablerow1">
-            <td>
-               <a href="#Warnings_I18N">Internationalization Warnings</a>
-            </td>
-            <td align="right">1</td>
-         </tr>
-         <tr class="tablerow0">
-            <td>
-               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
-            </td>
-            <td align="right">2</td>
-         </tr>
-         <tr class="tablerow1">
-            <td>
                <b>Total</b>
             </td>
             <td align="right">
-               <b>8</b>
+               <b>0</b>
             </td>
          </tr>
       </table>
       <h1>Warnings</h1>
       <p>Click on a warning row to see full context information.</p>
-      <h2>
-         <a name="Warnings_CORRECTNESS">Correctness Warnings</a>
-      </h2>
-      <table class="warningtable" width="100%" cellspacing="0">
-         <tr class="tableheader">
-            <th align="left">Code</th>
-            <th align="left">Warning</th>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e105');">
-            <td>
-               <span class="priority-2">NP</span>
-            </td>
-            <td>Read of unwritten field consumables in characters.inventory.Consumables.addConsumable(Consumable)</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e105" style="display: none;">
-                  <a href="#NP_UNWRITTEN_FIELD">Bug type NP_UNWRITTEN_FIELD (click for details)</a>
-                  <br/>In class characters.inventory.Consumables<br/>In method characters.inventory.Consumables.addConsumable(Consumable)<br/>Field characters.inventory.Consumables.consumables<br/>At Consumables.java:[line 11]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e121');">
-            <td>
-               <span class="priority-2">NP</span>
-            </td>
-            <td>Read of unwritten field consumables in characters.inventory.Consumables.removeConsumable(Consumable)</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e121" style="display: none;">
-                  <a href="#NP_UNWRITTEN_FIELD">Bug type NP_UNWRITTEN_FIELD (click for details)</a>
-                  <br/>In class characters.inventory.Consumables<br/>In method characters.inventory.Consumables.removeConsumable(Consumable)<br/>Field characters.inventory.Consumables.consumables<br/>At Consumables.java:[line 15]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e137');">
-            <td>
-               <span class="priority-2">NP</span>
-            </td>
-            <td>Read of unwritten field consumables in characters.inventory.Consumables.use(int)</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e137" style="display: none;">
-                  <a href="#NP_UNWRITTEN_FIELD">Bug type NP_UNWRITTEN_FIELD (click for details)</a>
-                  <br/>In class characters.inventory.Consumables<br/>In method characters.inventory.Consumables.use(int)<br/>Field characters.inventory.Consumables.consumables<br/>At Consumables.java:[line 19]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e153');">
-            <td>
-               <span class="priority-2">UwF</span>
-            </td>
-            <td>Unwritten field: characters.inventory.Consumables.consumables</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e153" style="display: none;">
-                  <a href="#UWF_UNWRITTEN_FIELD">Bug type UWF_UNWRITTEN_FIELD (click for details)</a>
-                  <br/>In class characters.inventory.Consumables<br/>Field characters.inventory.Consumables.consumables<br/>At Consumables.java:[line 11]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e166');">
-            <td>
-               <span class="priority-2">UwF</span>
-            </td>
-            <td>Unwritten field: characters.inventory.Inventory.consumables</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e166" style="display: none;">
-                  <a href="#UWF_UNWRITTEN_FIELD">Bug type UWF_UNWRITTEN_FIELD (click for details)</a>
-                  <br/>In class characters.inventory.Inventory<br/>Field characters.inventory.Inventory.consumables<br/>At Inventory.java:[line 19]</p>
-            </td>
-         </tr>
-      </table>
-      <h2>
-         <a name="Warnings_I18N">Internationalization Warnings</a>
-      </h2>
-      <table class="warningtable" width="100%" cellspacing="0">
-         <tr class="tableheader">
-            <th align="left">Code</th>
-            <th align="left">Warning</th>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e54');">
-            <td>
-               <span class="priority-1">Dm</span>
-            </td>
-            <td>Found reliance on default encoding in Main.main(String[]): new java.io.InputStreamReader(InputStream)</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e54" style="display: none;">
-                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
-                  <br/>In class Main<br/>In method Main.main(String[])<br/>Called method new java.io.InputStreamReader(InputStream)<br/>At Main.java:[line 25]</p>
-            </td>
-         </tr>
-      </table>
-      <h2>
-         <a name="Warnings_STYLE">Dodgy code Warnings</a>
-      </h2>
-      <table class="warningtable" width="100%" cellspacing="0">
-         <tr class="tableheader">
-            <th align="left">Code</th>
-            <th align="left">Warning</th>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e69');">
-            <td>
-               <span class="priority-2">UC</span>
-            </td>
-            <td>Useless object stored in variable powerAttack of method characters.classes.implementations.FighterClassBuilder.buildStartingAbilities()</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e69" style="display: none;">
-                  <a href="#UC_USELESS_OBJECT">Bug type UC_USELESS_OBJECT (click for details)</a>
-                  <br/>In class characters.classes.implementations.FighterClassBuilder<br/>In method characters.classes.implementations.FighterClassBuilder.buildStartingAbilities()<br/>Value powerAttack<br/>Type combat.abilities.Ability<br/>At FighterClassBuilder.java:[line 71]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e87');">
-            <td>
-               <span class="priority-2">UC</span>
-            </td>
-            <td>Useless object stored in variable sneakAttack of method characters.classes.implementations.ThiefClassBuilder.buildStartingAbilities()</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e87" style="display: none;">
-                  <a href="#UC_USELESS_OBJECT">Bug type UC_USELESS_OBJECT (click for details)</a>
-                  <br/>In class characters.classes.implementations.ThiefClassBuilder<br/>In method characters.classes.implementations.ThiefClassBuilder.buildStartingAbilities()<br/>Value sneakAttack<br/>Type combat.abilities.Ability<br/>At ThiefClassBuilder.java:[line 69]</p>
-            </td>
-         </tr>
-      </table>
       <h1>
          <a name="Details">Details</a>
       </h1>
-      <h2>
-         <a name="DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING: Reliance on default encoding</a>
-      </h2>
-
-<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
-
-      <h2>
-         <a name="NP_UNWRITTEN_FIELD">NP_UNWRITTEN_FIELD: Read of unwritten field</a>
-      </h2>
-
-  <p> The program is dereferencing a field that does not seem to ever have a non-null value written to it.
-Unless the field is initialized via some mechanism not seen by the analysis,
-dereferencing this value will generate a null pointer exception.
-</p>
-
-    <h2>
-         <a name="UC_USELESS_OBJECT">UC_USELESS_OBJECT: Useless object created</a>
-      </h2>
-
-<p>Our analysis shows that this object is useless.
-It's created and modified, but its value never go outside of the method or produce any side-effect.
-Either there is a mistake and object was intended to be used or it can be removed.</p>
-<p>This analysis rarely produces false-positives. Common false-positive cases include:</p>
-<p>- This object used to implicitly throw some obscure exception.</p>
-<p>- This object used as a stub to generalize the code.</p>
-<p>- This object used to hold strong references to weak/soft-referenced objects.</p>
-
-    <h2>
-         <a name="UWF_UNWRITTEN_FIELD">UWF_UNWRITTEN_FIELD: Unwritten field</a>
-      </h2>
-
-  <p> This field is never written.&nbsp; All reads of it will return the default
-value. Check for errors (should it have been initialized?), or remove it if it is useless.</p>
-
-    </body>
+   </body>
 </html>
