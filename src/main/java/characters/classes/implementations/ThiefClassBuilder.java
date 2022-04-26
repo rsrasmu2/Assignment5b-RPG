@@ -39,7 +39,7 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
 
     @Override
     public CharacterClassBuilder buildPrimaryResource(Race race) {
-        characterClass.setPrimaryResource(new CharacterResource("Energy", 100));
+        characterClass.setPrimaryResource(new CharacterResource("Energy", 0, 100));
         return this;
     }
 
@@ -52,26 +52,38 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
     @Override
     public CharacterClassBuilder buildStartingAbilities() {
         Ability attack = new Ability("Attack");
-        attack.addAction((user, target) -> {
-            int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
-            damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
-            target.getHealth().modifyCurrentValue(-damage);
+        attack.addAction((user, opponent) -> {
+            int damage = Ability.calculateDamage(
+                    (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue()),
+                    opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
+            opponent.getHealth().modifyCurrentValue(-damage);
+            System.out.println(opponent.getName() + " took " + damage + " damage.");
+            System.out.println(opponent.getName() + " " + opponent.getHealth().toString());
         });
         startingAbilities.add(attack);
 
         Ability defend = new Ability("Defend");
-        defend.addAction((user, target) -> {
-            target.getCombatStats().getStat(CombatStatType.DEFENSE)
+        defend.addAction((user, opponent) -> {
+            user.getCombatStats().getStat(CombatStatType.DEFENSE)
                 .addModifier(new MultiplicativeModifier(2.0, 1));
+            System.out.println(user.getName() + " entered a defensive stance.");
         });
         startingAbilities.add(defend);
 
-        Ability sneakAttack = new Ability("Sneak Attack", 25);
-        sneakAttack.addAction((user, target) -> {
-            int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * 2);
-            damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
-            target.getHealth().modifyCurrentValue(-damage);
+        int energyCost = 25;
+        double damageModifier = 1.3;
+        Ability sneakAttack = new Ability("Sneak Attack", energyCost);
+        sneakAttack.addAction((user, opponent) -> {
+            int damage = Ability.calculateDamage(
+                    (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * damageModifier),
+                    opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
+            opponent.getHealth().modifyCurrentValue(-damage);
+            System.out.println(user.getName() + " spent " + energyCost + " energy.");
+            System.out.println(user.getName() + " " + user.getPrimaryResource().toString());
+            System.out.println(opponent.getName() + " took " + damage + " damage.");
+            System.out.println(opponent.getName() + " " + opponent.getHealth().toString());
         });
+        startingAbilities.add(sneakAttack);
 
         characterClass.setStartingAbilities(startingAbilities);
         return this;

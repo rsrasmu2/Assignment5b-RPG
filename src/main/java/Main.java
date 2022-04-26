@@ -6,11 +6,16 @@ import characters.classes.implementations.WizardClassBuilder;
 import characters.inventory.EquipmentSlot;
 import characters.races.Race;
 import characters.races.implementations.HumanRaceBuilder;
-import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
+import combat.Combat;
 import combat.abilities.Abilities;
+import combat.abilities.monster.AttackAbility;
+import combat.abilities.monster.DefendAbility;
 import items.Equippable;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Main {
@@ -18,40 +23,45 @@ public class Main {
      * The main method of the program.
      * @param args input args.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
         CombatStats combatStats = new CombatStats();
 
-        Race human = new HumanRaceBuilder()
+        Race playerRace = new HumanRaceBuilder()
                 .buildName()
                 .buildStartingHealth()
                 .buildStartingMana()
                 .modifyCombatStats(combatStats)
                 .getRace();
 
-        CharacterClass fighter = new FighterClassBuilder()
+        CharacterClass playerClass = new WizardClassBuilder()
                 .buildName()
                 .buildStartingHealth()
-                .buildPrimaryResource(human)
+                .buildPrimaryResource(playerRace)
                 .buildStartingAbilities()
                 .modifyCombatStats(combatStats)
                 .getCharacterClass();
 
-        Abilities abilities = new Abilities(fighter.getStartingAbilities());
+        Abilities abilities = new Abilities(playerClass.getStartingAbilities());
 
 
 
-        Player player = new Player(human, fighter, combatStats, abilities);
-        Monster monster = new Monster("Goblin", 6,
-                new CombatStats(10, 5, 10, 5, 13),
-                new Abilities(new ArrayList()));
+        Player player = new Player(playerRace, playerClass, combatStats, abilities);
+        Abilities monsterAbilities =  new Abilities(new ArrayList());
+        monsterAbilities.addAbility(new AttackAbility());
+        monsterAbilities.addAbility(new DefendAbility());
+        Monster monster = new Monster("Goblin", 26,
+                new CombatStats(25, 25, 5, 20, 20),
+                monsterAbilities);
 
 
-        var sword = new Equippable("Sword", EquipmentSlot.WEAPON, 10, 0, 0, 0, 0);
-        System.out.println(player.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
-        player.getInventory().getEquipment().equip(sword);
-        System.out.println(player.getInventory().getEquipment().getEquippable(EquipmentSlot.WEAPON));
-        System.out.println(player.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
-        player.getInventory().getEquipment().unequip(EquipmentSlot.WEAPON);
-        System.out.println(player.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
+        var rustySword = new Equippable("Rusty Sword", EquipmentSlot.WEAPON, 10, 0, 0, 0, 0);
+        player.getInventory().getEquipment().equip(rustySword);
+
+        Combat combat = new Combat(player, monster);
+        combat.begin(reader);
+
+        reader.close();
     }
 }

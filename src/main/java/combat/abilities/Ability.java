@@ -1,6 +1,7 @@
 package combat.abilities;
 
-import characters.resources.CharacterResource;
+import characters.stats.CombatStatType;
+import combat.Combat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,20 +33,38 @@ public class Ability {
         return this;
     }
 
+    public boolean canExecute(Targettable user) {
+        return user.getPrimaryResource().getCurrentValue() >= cost;
+    }
+
     /**
      * Attempts to execute the given Ability.
      * @param user the character using the ability.
-     * @param target the target of the ability.
+     * @param opponent the combat opponent.
      * @return whether the ability was used successfully or not.
      */
-    public boolean execute(Targettable user, Targettable target) {
+    public boolean execute(Targettable user, Targettable opponent) {
         if (user.getPrimaryResource().getCurrentValue() < cost) {
             return false;
         }
         user.getPrimaryResource().modifyCurrentValue(-cost);
         for (AbilityAction action : actions) {
-            action.execute(user, target);
+            action.execute(user, opponent);
         }
         return true;
+    }
+
+    public static int calculateDamage(int baseDamage, int baseDefense) {
+        int damage = Combat.calculateDamageRange(baseDamage) - baseDefense;
+        return (int)Math.max(0, damage);
+    }
+
+    @Override
+    public String toString() {
+        String ret = name + ".";
+        if (cost != 0) {
+            ret += " Cost: " + cost;
+        }
+        return ret;
     }
 }

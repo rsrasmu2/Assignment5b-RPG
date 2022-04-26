@@ -54,26 +54,41 @@ public class FighterClassBuilder implements CharacterClassBuilder {
     @Override
     public CharacterClassBuilder buildStartingAbilities() {
         Ability attack = new Ability("Attack");
-        attack.addAction((user, target) -> {
-            int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
-            damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
-            target.getHealth().modifyCurrentValue(-damage);
-            user.getPrimaryResource().modifyCurrentValue(10);
+        attack.addAction((user, opponent) -> {
+            int rageGain = 10;
+            int damage = Ability.calculateDamage(
+                    (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue()),
+                    opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
+            opponent.getHealth().modifyCurrentValue(-damage);
+            user.getPrimaryResource().modifyCurrentValue(rageGain);
+            System.out.println(opponent.getName() + " took " + damage + " damage.");
+            System.out.println(opponent.getName() + " health - " + opponent.getHealth().toString());
+            System.out.println(user.getName() + " built up " + rageGain + " rage.");
+            System.out.println(user.getName() + " " + user.getPrimaryResource().toString());
         });
         startingAbilities.add(attack);
 
         Ability defend = new Ability("Defend");
-        defend.addAction((user, target) -> { target.getCombatStats().getStat(CombatStatType.DEFENSE)
+        defend.addAction((user, opponent) -> { user.getCombatStats().getStat(CombatStatType.DEFENSE)
                 .addModifier(new MultiplicativeModifier(2.0, 1));
+            System.out.println(user.getName() + " entered a defensive stance.");
         });
         startingAbilities.add(defend);
 
-        Ability powerAttack = new Ability("PowerAttack", 20);
-        powerAttack.addAction((user, target) -> {
-            int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * 3);
-            damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
-            target.getHealth().modifyCurrentValue(-damage);
+        int rageCost = 20;
+        double damageModifier = 1.5;
+        Ability powerAttack = new Ability("PowerAttack", rageCost);
+        powerAttack.addAction((user, opponent) -> {
+            int damage = Ability.calculateDamage(
+                    (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * damageModifier),
+                    opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
+            opponent.getHealth().modifyCurrentValue(-damage);
+            System.out.println(user.getName() + " spent " + rageCost + " rage.");
+            System.out.println(user.getName() + " " + user.getPrimaryResource().toString());
+            System.out.println(opponent.getName() + " took " + damage + " damage.");
+            System.out.println(opponent.getName() + " " + opponent.getHealth().toString());
         });
+        startingAbilities.add(powerAttack);
 
         characterClass.setStartingAbilities(startingAbilities);
         return this;

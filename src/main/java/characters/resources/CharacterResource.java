@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterResource {
-    private String resourceName;
+    private String name;
 
     private int currentValue;
     private int maxValue;
@@ -17,7 +17,7 @@ public class CharacterResource {
      * @param startingValue the starting current and max value of the resource.
      */
     public CharacterResource(String resourceName, int startingValue) {
-        this.resourceName = resourceName;
+        this.name = resourceName;
         maxValue = startingValue;
         currentValue = startingValue;
         observers = new ArrayList<>();
@@ -30,10 +30,14 @@ public class CharacterResource {
      * @param startingMaxValue the starting max value of the resource.
      */
     public CharacterResource(String resourceName, int startingCurrentValue, int startingMaxValue) {
-        this.resourceName = resourceName;
+        this.name = resourceName;
         maxValue = startingMaxValue;
         currentValue = startingCurrentValue;
         observers = new ArrayList();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getCurrentValue() {
@@ -97,7 +101,7 @@ public class CharacterResource {
 
     @Override
     public String toString() {
-        return resourceName + ": " + currentValue + " / " + maxValue;
+        return name + ": " + currentValue + " / " + maxValue;
     }
 
     public void addObserver(CharacterResourceObserver observer) {

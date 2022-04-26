@@ -24,6 +24,10 @@ test {
     useJUnitPlatform()
 }
 
+run {
+	standardInput = System.in
+}
+
 
 ///////////////////////////////////////////////////////////////////////
 // Configure Checkstyle

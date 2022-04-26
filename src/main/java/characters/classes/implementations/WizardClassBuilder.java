@@ -53,27 +53,35 @@ public class WizardClassBuilder implements CharacterClassBuilder {
     @Override
     public CharacterClassBuilder buildStartingAbilities() {
         Ability attack = new Ability("Attack");
-        attack.addAction((user, target) -> {
-            int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
-            damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
-            target.getHealth().modifyCurrentValue(-damage);
+        attack.addAction((user, opponent) -> {
+            int damage = Ability.calculateDamage(
+                    (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue()),
+                    opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
+            opponent.getHealth().modifyCurrentValue(-damage);
         });
         startingAbilities.add(attack);
 
         Ability defend = new Ability("Defend");
-        defend.addAction((user, target) -> { target.getCombatStats().getStat(CombatStatType.DEFENSE)
+        defend.addAction((user, opponent) -> { user.getCombatStats().getStat(CombatStatType.DEFENSE)
                 .addModifier(new MultiplicativeModifier(2.0, 1));
         });
         startingAbilities.add(defend);
 
-        Ability magicMissiles = new Ability("Magic Missiles");
-        attack.addAction((user, target) -> {
-            int dartDamage = (int)(user.getCombatStats().getStat(CombatStatType.MAGIC_ATTACK).getValue() * 0.75);
+        int manaCost = 100;
+        double damageModifier = 1.0;
+        Ability magicMissiles = new Ability("Magic Missiles", manaCost);
+        magicMissiles.addAction((user, opponent) -> {
+            System.out.println(user.getName() + " spent " + manaCost + " mana.");
+            System.out.println(user.getName() + " " + user.getPrimaryResource().toString());
+            int dartDamage = (int)(user.getCombatStats().getStat(CombatStatType.MAGIC_ATTACK).getValue() * damageModifier);
             for (int i = 0; i < 3; i++) {
-                int damage = Combat.calculateDamageRange(dartDamage);
-                damage -= target.getCombatStats().getStat(CombatStatType.MAGIC_DEFENSE).getValue();
-                target.getHealth().modifyCurrentValue(-damage);
+                int damage = Ability.calculateDamage(
+                        (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * damageModifier),
+                        opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
+                opponent.getHealth().modifyCurrentValue(-damage);
+                System.out.println(opponent.getName() + " took " + damage + " damage.");
             }
+            System.out.println(opponent.getName() + " " + opponent.getHealth().toString());
         });
         startingAbilities.add(magicMissiles);
 

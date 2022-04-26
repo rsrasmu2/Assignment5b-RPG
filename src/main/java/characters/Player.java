@@ -7,10 +7,16 @@ import characters.races.Race;
 import characters.resources.CharacterResource;
 import characters.stats.CombatStats;
 import combat.abilities.Abilities;
+import combat.abilities.Ability;
 import combat.abilities.Targettable;
 import items.Equipper;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+
 public class Player implements Targettable, Equipper, LevelObserver {
+    private String name;
+
     private CharacterResource health;
     private CharacterResource primaryResource;
 
@@ -30,6 +36,7 @@ public class Player implements Targettable, Equipper, LevelObserver {
      */
     public Player(Race race, CharacterClass characterClass,
                   CombatStats combatStats, Abilities abilities) {
+        name = "Player";
         this.race = race;
         this.characterClass = characterClass;
         this.combatStats = combatStats;
@@ -38,6 +45,10 @@ public class Player implements Targettable, Equipper, LevelObserver {
         primaryResource = characterClass.getPrimaryResource();
         inventory = new Inventory(this);
         this.abilities = abilities;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public CharacterResource getHealth() {
@@ -66,6 +77,35 @@ public class Player implements Targettable, Equipper, LevelObserver {
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public void act(Targettable opponent, BufferedReader reader) throws IOException {
+        while (true) {
+            System.out.println("Choose your ability:");
+            for (int i = 0; i < abilities.getAbilities().size(); i++) {
+                System.out.println(i + " " + abilities.getAbilities().get(i));
+            }
+            String input = reader.readLine();
+            int intInput = 0;
+            try {
+                intInput = Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Select the number of the ability you wish to use.");
+                continue;
+            }
+            if (intInput < 0 || intInput >= abilities.getAbilities().size()) {
+                System.out.println("Select the number of the ability you wish to use.");
+                continue;
+            }
+            Ability ability = abilities.getAbilities().get(intInput);
+            if (!ability.canExecute(this)) {
+                System.out.println("Not enough " + getPrimaryResource().getName() + ".");
+                continue;
+            }
+            System.out.println("You used " + ability.getName() + ".");
+            ability.execute(this, opponent);
+            break;
+        }
     }
 
     public void tick() {
