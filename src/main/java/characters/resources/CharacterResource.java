@@ -6,6 +6,7 @@ import java.util.List;
 public class CharacterResource {
     private String name;
 
+    private int startingValue;
     private int currentValue;
     private int maxValue;
 
@@ -18,6 +19,7 @@ public class CharacterResource {
      */
     public CharacterResource(String resourceName, int startingValue) {
         this.name = resourceName;
+        this.startingValue = startingValue;
         maxValue = startingValue;
         currentValue = startingValue;
         observers = new ArrayList<>();
@@ -31,6 +33,7 @@ public class CharacterResource {
      */
     public CharacterResource(String resourceName, int startingCurrentValue, int startingMaxValue) {
         this.name = resourceName;
+        this.startingValue = startingCurrentValue;
         maxValue = startingMaxValue;
         currentValue = startingCurrentValue;
         observers = new ArrayList();
@@ -97,6 +100,10 @@ public class CharacterResource {
 
     public void modifyMaxValue(int modifier) {
         setMaxValue(getMaxValue() + modifier);
+    }
+
+    public void refresh() {
+        setCurrentValue(startingValue);
     }
 
     @Override

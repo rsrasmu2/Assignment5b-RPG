@@ -27,4 +27,12 @@ public class Consumables {
             removeConsumable(consumable);
         }
     }
+
+    public String toString() {
+        String ret = "Consumables:\n";
+        for (Consumable consumable :  consumables) {
+            ret += consumable.toString() + "\n";
+        }
+        return ret;
+    }
 }

@@ -44,4 +44,24 @@ public class Equippable extends Item {
     public EquipmentSlot getSlot() {
         return slot;
     }
+
+    public String toString() {
+        String retValue = getName() + ":\n";
+        if (attackModifier.getValue() != 0) {
+            retValue += "Attack: " + attackModifier + "\n";
+        }
+        if (defenseModifier.getValue() != 0) {
+            retValue += "Defense: " + defenseModifier + "\n";
+        }
+        if (magicAttackModifier.getValue() != 0) {
+            retValue += "Magic Attack: " + magicAttackModifier + "\n";
+        }
+        if (magicDefenseModifier.getValue() != 0) {
+            retValue += "Magic Defense: " + magicDefenseModifier + "\n";
+        }
+        if (evasionModifier.getValue() != 0) {
+            retValue += "Evasion: " + evasionModifier + "\n";
+        }
+        return retValue;
+    }
 }

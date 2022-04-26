@@ -33,4 +33,8 @@ public class Inventory {
     public void modifyGold(int value) {
         setGold(gold + value);
     }
+
+    public String toString() {
+        return  equipment.toString() + "\n" + consumables.toString() + "\nGold: " + gold;
+    }
 }

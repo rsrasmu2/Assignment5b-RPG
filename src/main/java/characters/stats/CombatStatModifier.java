@@ -27,5 +27,7 @@ public abstract class CombatStatModifier {
         }
     }
 
+    public abstract double getValue();
+
     public abstract int modify(int valueToModify);
 }

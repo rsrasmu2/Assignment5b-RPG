@@ -32,6 +32,8 @@ public class Game {
         var rustySword = new Equippable("Rusty Sword", EquipmentSlot.WEAPON, 10, 0, 0, 0, 0);
         player.getInventory().getEquipment().equip(rustySword);
 
+        System.out.println(player.getInventory().toString());
+
         Dungeon dungeon = new Dungeon();
         dungeon.begin(player, reader);
     }

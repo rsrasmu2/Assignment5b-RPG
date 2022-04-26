@@ -14,7 +14,16 @@ public class MultiplicativeModifier extends CombatStatModifier {
     }
 
     @Override
+    public double getValue() {
+        return toMultiply;
+    }
+
+    @Override
     public int modify(int valueToModify) {
         return (int)(valueToModify * toMultiply);
+    }
+
+    public String toString() {
+        return "* " + toMultiply;
     }
 }

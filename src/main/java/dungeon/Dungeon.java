@@ -25,7 +25,7 @@ public class Dungeon {
             generateRoom();
             currentRoom.enter(player, reader);
             if (player.getHealth().getCurrentValue() == 0) {
-                System.out.println("Returning to town...");
+                System.out.println("Returning to town...\n----------");
                 break;
             }
             roomNumber++;

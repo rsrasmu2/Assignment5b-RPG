@@ -59,4 +59,15 @@ public class Equipment {
                 throw new IllegalStateException("Unexpected value: " + slot);
         }
     }
+
+    public String toString() {
+        String ret = "";
+        if (weapon != null) {
+            ret += "Weapon:\n" + weapon.toString();
+        }
+        if (armor != null) {
+            ret += "Armor:\n" + armor.toString();
+        }
+        return ret;
+    }
 }
