@@ -7,6 +7,8 @@ public class Inventory {
     private Equipment equipment;
     private Consumables consumables;
 
+    private int gold;
+
     public Inventory(Equipper equipper) {
         equipment = new Equipment(equipper);
         consumables = new Consumables();
@@ -18,5 +20,17 @@ public class Inventory {
 
     public Consumables getConsumables() {
         return consumables;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public void modifyGold(int value) {
+        setGold(gold + value);
     }
 }

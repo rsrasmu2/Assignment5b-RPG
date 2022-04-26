@@ -18,6 +18,9 @@ public class Monster implements Targettable {
 
     private Abilities abilities;
 
+    private int experience;
+    private int gold;
+
     private Random rand;
 
     public Monster() {
@@ -56,6 +59,22 @@ public class Monster implements Targettable {
 
     public void setAbilities(Abilities abilities) {
         this.abilities = abilities;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
     }
 
     /**

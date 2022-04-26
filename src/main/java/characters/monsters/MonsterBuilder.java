@@ -9,5 +9,9 @@ public interface MonsterBuilder {
 
     MonsterBuilder buildCombatStats();
 
+    MonsterBuilder buildExperience();
+
+    MonsterBuilder buildGold();
+
     Monster getMonster();
 }

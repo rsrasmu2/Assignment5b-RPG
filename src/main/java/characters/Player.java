@@ -2,6 +2,7 @@ package characters;
 
 import characters.classes.CharacterClass;
 import characters.inventory.Inventory;
+import characters.levels.Level;
 import characters.levels.LevelObserver;
 import characters.races.Race;
 import characters.resources.CharacterResource;
@@ -25,6 +26,8 @@ public class Player implements Targettable, Equipper, LevelObserver {
 
     private CombatStats combatStats;
 
+    private Level level;
+
     private Inventory inventory;
 
     private Abilities abilities;
@@ -43,6 +46,7 @@ public class Player implements Targettable, Equipper, LevelObserver {
         health = new CharacterResource("Health", race.getStartingHealth()
                 + characterClass.getStartingHealth());
         primaryResource = characterClass.getPrimaryResource();
+        this.level = new Level();
         inventory = new Inventory(this);
         this.abilities = abilities;
     }
@@ -69,6 +73,10 @@ public class Player implements Targettable, Equipper, LevelObserver {
 
     public CombatStats getCombatStats() {
         return combatStats;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 
     public Abilities getAbilities() {

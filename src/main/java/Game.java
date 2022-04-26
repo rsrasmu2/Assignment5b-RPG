@@ -14,6 +14,7 @@ import characters.races.implementations.OrcRaceBuilder;
 import characters.stats.CombatStats;
 import combat.Combat;
 import combat.abilities.Abilities;
+import dungeon.Dungeon;
 import items.Equippable;
 
 import java.io.BufferedReader;
@@ -31,15 +32,8 @@ public class Game {
         var rustySword = new Equippable("Rusty Sword", EquipmentSlot.WEAPON, 10, 0, 0, 0, 0);
         player.getInventory().getEquipment().equip(rustySword);
 
-        Monster monster = new GoblinMonsterBuilder()
-                .buildName()
-                .buildHealth()
-                .buildCombatStats()
-                .buildAbilities()
-                .getMonster();
-
-        Combat combat = new Combat(player, monster);
-        combat.begin(reader);
+        Dungeon dungeon = new Dungeon();
+        dungeon.begin(player, reader);
     }
 
     /**

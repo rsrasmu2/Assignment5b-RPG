@@ -71,6 +71,10 @@ public class Level {
         }
     }
 
+    public void modifyCurrentExperience(int value) {
+        setCurrentExperience(currentExperience + value);
+    }
+
     public int getExperienceToNextLevel() {
         return experienceToNextLevel;
     }

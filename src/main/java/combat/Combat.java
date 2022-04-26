@@ -32,7 +32,11 @@ public class Combat {
                 return;
             }
             if (monster.getHealth().getCurrentValue() == 0) {
-                System.out.println("You win!\n----------");
+                System.out.println("You win!");
+                player.getLevel().modifyCurrentExperience(monster.getExperience());
+                System.out.println("You gained " + monster.getExperience() + " experience!");
+                player.getInventory().modifyGold(monster.getGold());
+                System.out.println("You gained " + monster.getGold() + " gold!\n----------");
                 return;
             }
             tick(reader);

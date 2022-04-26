@@ -47,6 +47,18 @@ public class GoblinMonsterBuilder implements MonsterBuilder {
     }
 
     @Override
+    public MonsterBuilder buildExperience() {
+        monster.setExperience(100);
+        return this;
+    }
+
+    @Override
+    public MonsterBuilder buildGold() {
+        monster.setGold(6);
+        return this;
+    }
+
+    @Override
     public Monster getMonster() {
         return monster;
     }
