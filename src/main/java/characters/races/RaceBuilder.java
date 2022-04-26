@@ -1,6 +1,5 @@
 package characters.races;
 
-import characters.classes.CharacterClassBuilder;
 import characters.stats.CombatStats;
 
 public interface RaceBuilder {

@@ -6,12 +6,21 @@ import characters.races.Race;
 import characters.resources.CharacterResource;
 import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
+import combat.abilities.Ability;
+import combat.abilities.Targettable;
+import combat.abilities.AbilityAction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WizardClassBuilder implements CharacterClassBuilder {
     private CharacterClass characterClass;
 
+    private List<Ability> startingAbilities;
+
     public WizardClassBuilder() {
         this.characterClass = new CharacterClass();
+        startingAbilities = new ArrayList();
     }
 
     @Override
@@ -36,6 +45,23 @@ public class WizardClassBuilder implements CharacterClassBuilder {
     @Override
     public CharacterClassBuilder buildHealthPerLevel() {
         characterClass.setHealthPerLevel(6);
+        return this;
+    }
+
+    @Override
+    public CharacterClassBuilder buildStartingAbilities() {
+        Ability attack = new Ability("Attack");
+        attack.addAction(new AbilityAction() {
+            @Override
+            public void execute(Targettable caster, Targettable target) {
+                int damage = caster.getCombatStats().getStat(CombatStatType.ATTACK).getValue()
+                        - target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
+                target.getHealth().modifyCurrentValue(-damage);
+            }
+        });
+        startingAbilities.add(attack);
+
+        characterClass.setStartingAbilities(startingAbilities);
         return this;
     }
 

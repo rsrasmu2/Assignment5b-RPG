@@ -1,7 +1,7 @@
-package combat.abilities.actions;
+package combat.abilities;
 
 import combat.abilities.Targettable;
 
-public interface Action {
+public interface AbilityAction {
     void execute(Targettable caster, Targettable target);
 }

@@ -6,19 +6,19 @@ import java.util.List;
 public class Abilities {
     private List<Ability> abilities;
 
-    public Abilities() {
-        abilities = new ArrayList();
+    public Abilities(List<Ability> abilities) {
+        this.abilities = abilities;
     }
 
-    public void AddAbility(Ability ability) {
+    public void addAbility(Ability ability) {
         abilities.add(ability);
     }
 
-    public void RemoveAbility(Ability ability) {
+    public void removeAbility(Ability ability) {
         abilities.remove(ability);
     }
 
-    public List<Ability> GetAbilities() {
+    public List<Ability> getAbilities() {
         return abilities;
     }
 }

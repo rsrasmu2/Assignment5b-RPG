@@ -12,9 +12,9 @@ public interface CharacterClassBuilder {
 
     CharacterClassBuilder buildHealthPerLevel();
 
-    CharacterClassBuilder modifyCombatStats(CombatStats combatStats);
+    CharacterClassBuilder buildStartingAbilities();
 
-    CharacterClassBuilder buildAbilities();
+    CharacterClassBuilder modifyCombatStats(CombatStats combatStats);
 
     CharacterClass getCharacterClass();
 }

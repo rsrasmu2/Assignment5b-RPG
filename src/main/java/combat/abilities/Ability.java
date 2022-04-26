@@ -1,27 +1,34 @@
 package combat.abilities;
 
-import combat.abilities.actions.Action;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Ability {
+public class Ability {
     private String name;
 
-    private List<Action> actions;
+    private List<AbilityAction> actions;
 
     public Ability(String name) {
         this.name = name;
         actions = new ArrayList();
     }
 
-    protected Ability addAction(Action action) {
+    public String getName() {
+        return name;
+    }
+
+    public Ability addAction(AbilityAction action) {
         actions.add(action);
         return this;
     }
 
+    /**
+     * Executes the ability.
+     * @param caster the character using the ability.
+     * @param target the target of the ability.
+     */
     public void execute(Targettable caster, Targettable target) {
-        for (Action action : actions) {
+        for (AbilityAction action : actions) {
             action.execute(caster, target);
         }
     }

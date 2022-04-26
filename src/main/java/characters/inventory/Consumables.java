@@ -1,0 +1,25 @@
+package characters.inventory;
+
+import items.Consumable;
+
+import java.util.List;
+
+public class Consumables {
+    private List<Consumable> consumables;
+
+    public void addConsumable(Consumable consumable) {
+        consumables.add(consumable);
+    }
+
+    public void removeConsumable(Consumable consumable) {
+        consumables.remove(consumable);
+    }
+
+    public void use(int index) {
+        Consumable consumable = consumables.get(index);
+        consumable.use();
+        if (consumable.getUses() == 0) {
+            removeConsumable(consumable);
+        }
+    }
+}

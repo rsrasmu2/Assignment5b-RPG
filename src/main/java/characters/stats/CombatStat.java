@@ -11,8 +11,12 @@ public class CombatStat {
 
     private List<CombatStatObserver> observers;
 
-    public CombatStat(int value) {
-        baseValue = value;
+    /**
+     * Creates a new combat stat.
+     * @param baseValue the base value of the stat.
+     */
+    public CombatStat(int baseValue) {
+        this.baseValue = baseValue;
         additiveModifiers = new ArrayList();
         multiplicativeModifiers = new ArrayList();
         observers = new ArrayList();
@@ -22,6 +26,10 @@ public class CombatStat {
         return baseValue;
     }
 
+    /**
+     * Sets the base value of the combat stat.
+     * @param newBaseValue the new base value of the combat stat.
+     */
     public void setBaseValue(int newBaseValue) {
         if (baseValue == newBaseValue) {
             return;
@@ -40,6 +48,10 @@ public class CombatStat {
         setBaseValue(baseValue + toModify);
     }
 
+    /**
+     * Adds a value modifier to the combat stat.
+     * @param modifier the value modifier.
+     */
     public void addModifier(CombatStatModifier modifier) {
         if (modifier instanceof AdditiveModifier) {
             additiveModifiers.add((AdditiveModifier) modifier);
@@ -52,6 +64,10 @@ public class CombatStat {
         }
     }
 
+    /**
+     * Removes the given modifier from the combat stat.
+     * @param modifier the modifier to remove.
+     */
     public void removeModifier(CombatStatModifier modifier) {
         if (modifier instanceof AdditiveModifier) {
             additiveModifiers.remove((AdditiveModifier) modifier);
@@ -64,6 +80,10 @@ public class CombatStat {
         }
     }
 
+    /**
+     * Returns the total value of the stat after modifiers are applied.
+     * @return the total value of the stat after modifiers are applied.
+     */
     public int getValue() {
         int totalValue = baseValue;
         for (CombatStatModifier modifier : additiveModifiers) {
@@ -75,19 +95,22 @@ public class CombatStat {
         return totalValue;
     }
 
-    public void tickModifiers() {
+    /**
+     * Ticks the simulation a single tick, lowering modifier durations by 1.
+     */
+    public void tick() {
         for (int i = additiveModifiers.size() - 1; i >= 0; i--) {
             CombatStatModifier modifier = additiveModifiers.get(i);
             modifier.tickDuration();
             if (modifier.getDuration() == 0) {
-                additiveModifiers.remove(i);
+                removeModifier(modifier);
             }
         }
         for (int i = multiplicativeModifiers.size() - 1; i >= 0; i--) {
             CombatStatModifier modifier = multiplicativeModifiers.get(i);
             modifier.tickDuration();
             if (modifier.getDuration() == 0) {
-                multiplicativeModifiers.remove(i);
+                removeModifier(modifier);
             }
         }
     }

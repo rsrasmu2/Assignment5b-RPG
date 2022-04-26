@@ -6,13 +6,24 @@ import characters.races.Race;
 import characters.resources.CharacterResource;
 import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
-import combat.abilities.AbilityUser;
+import characters.stats.MultiplicativeModifier;
+import combat.Combat;
+import combat.abilities.Ability;
+import combat.abilities.Targettable;
+import combat.abilities.AbilityAction;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class FighterClassBuilder implements CharacterClassBuilder {
     private CharacterClass characterClass;
 
+    private List<Ability> startingAbilities;
+
     public FighterClassBuilder() {
         this.characterClass = new CharacterClass();
+        startingAbilities = new ArrayList();
     }
 
     @Override
@@ -37,6 +48,34 @@ public class FighterClassBuilder implements CharacterClassBuilder {
     @Override
     public CharacterClassBuilder buildHealthPerLevel() {
         characterClass.setHealthPerLevel(10);
+        return this;
+    }
+
+    @Override
+    public CharacterClassBuilder buildStartingAbilities() {
+        Ability attack = new Ability("Attack");
+        attack.addAction(new AbilityAction() {
+            @Override
+            public void execute(Targettable caster, Targettable target) {
+                int damage = Combat.calculateDamageRange(caster.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
+                damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
+                target.getHealth().modifyCurrentValue(-damage);
+                caster.getPrimaryResource().modifyCurrentValue(damage);
+            }
+        });
+        startingAbilities.add(attack);
+
+        Ability defend = new Ability("Defend");
+        defend.addAction(new AbilityAction() {
+            @Override
+            public void execute(Targettable caster, Targettable target) {
+                target.getCombatStats().getStat(CombatStatType.DEFENSE)
+                        .addModifier(new MultiplicativeModifier(2.0, 1));
+            }
+        });
+        startingAbilities.add(defend);
+
+        characterClass.setStartingAbilities(startingAbilities);
         return this;
     }
 

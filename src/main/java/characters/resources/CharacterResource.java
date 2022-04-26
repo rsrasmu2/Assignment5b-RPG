@@ -20,7 +20,6 @@ public class CharacterResource {
         this.resourceName = resourceName;
         maxValue = startingValue;
         currentValue = startingValue;
-
         observers = new ArrayList<>();
     }
 
@@ -34,6 +33,7 @@ public class CharacterResource {
         this.resourceName = resourceName;
         maxValue = startingMaxValue;
         currentValue = startingCurrentValue;
+        observers = new ArrayList();
     }
 
     public int getCurrentValue() {
@@ -56,7 +56,7 @@ public class CharacterResource {
 
         currentValue = newCurrentValue;
 
-        // Clamp HP to 0..Max
+        // Clamp HP to [0, Max]
         if (currentValue > maxValue) {
             currentValue = maxValue;
         } else if (currentValue < 0) {

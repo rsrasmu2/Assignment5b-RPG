@@ -18,6 +18,9 @@ public abstract class CombatStatModifier {
         return duration;
     }
 
+    /**
+     * The amount of ticks, if any, until the modifier is to be removed.
+     */
     public void tickDuration() {
         if (durationType == CombatStatModifierDuration.Timed) {
             duration--;

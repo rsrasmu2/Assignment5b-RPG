@@ -6,12 +6,21 @@ import characters.races.Race;
 import characters.resources.CharacterResource;
 import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
+import combat.abilities.Ability;
+import combat.abilities.Targettable;
+import combat.abilities.AbilityAction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ThiefClassBuilder implements CharacterClassBuilder {
     private CharacterClass characterClass;
 
+    private List<Ability> startingAbilities;
+
     public ThiefClassBuilder() {
         this.characterClass = new CharacterClass();
+        startingAbilities = new ArrayList();
     }
 
     @Override
@@ -35,6 +44,23 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
     @Override
     public CharacterClassBuilder buildHealthPerLevel() {
         characterClass.setHealthPerLevel(8);
+        return this;
+    }
+
+    @Override
+    public CharacterClassBuilder buildStartingAbilities() {
+        Ability attack = new Ability("Attack");
+        attack.addAction(new AbilityAction() {
+            @Override
+            public void execute(Targettable caster, Targettable target) {
+                int damage = caster.getCombatStats().getStat(CombatStatType.ATTACK).getValue()
+                        - target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
+                target.getHealth().modifyCurrentValue(-damage);
+            }
+        });
+        startingAbilities.add(attack);
+
+        characterClass.setStartingAbilities(startingAbilities);
         return this;
     }
 

@@ -15,12 +15,12 @@ public class Monster implements Targettable {
 
     private Abilities abilities;
 
-    public Monster(String name, int startingHealth, CombatStats combatStats) {
+    public Monster(String name, int startingHealth, CombatStats combatStats, Abilities abilities) {
         this.name = name;
         health = new CharacterResource("Health", startingHealth);
         primaryResource = new CharacterResource("None", 0);
         this.combatStats = combatStats;
-        this.abilities = new Abilities();
+        this.abilities = abilities;
     }
 
     public String getName() {
@@ -38,10 +38,5 @@ public class Monster implements Targettable {
 
     public CombatStats getCombatStats() {
         return combatStats;
-    }
-
-    @Override
-    public Abilities GetAbilities() {
-        return abilities;
     }
 }

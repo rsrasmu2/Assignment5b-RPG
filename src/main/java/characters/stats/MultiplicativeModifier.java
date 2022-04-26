@@ -1,14 +1,14 @@
 package characters.stats;
 
 public class MultiplicativeModifier extends CombatStatModifier {
-    private float toMultiply;
+    private double toMultiply;
 
-    public MultiplicativeModifier(int toMultiply) {
+    public MultiplicativeModifier(double toMultiply) {
         super();
         this.toMultiply = toMultiply;
     }
 
-    public MultiplicativeModifier(int toMultiply, int duration) {
+    public MultiplicativeModifier(double toMultiply, int duration) {
         super(duration);
         this.toMultiply = toMultiply;
     }
