@@ -1,5 +1,6 @@
 package characters.resources;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CharacterResource {
@@ -19,6 +20,8 @@ public class CharacterResource {
         this.resourceName = resourceName;
         maxValue = startingValue;
         currentValue = startingValue;
+
+        observers = new ArrayList<>();
     }
 
     /**
@@ -82,6 +85,11 @@ public class CharacterResource {
         if (currentValue > maxValue) {
             setCurrentValue(maxValue);
         }
+    }
+
+    @Override
+    public String toString() {
+        return resourceName + ": " + currentValue + " / " + maxValue;
     }
 
     public void addObserver(CharacterResourceObserver observer) {

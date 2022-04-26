@@ -2,6 +2,7 @@ package characters.races.implementations;
 
 import characters.races.Race;
 import characters.races.RaceBuilder;
+import characters.stats.CombatStats;
 
 public class ElfRaceBuilder implements RaceBuilder {
     private Race race;
@@ -25,6 +26,16 @@ public class ElfRaceBuilder implements RaceBuilder {
     @Override
     public RaceBuilder buildStartingMana() {
         race.setStartingMana(200);
+        return this;
+    }
+
+    @Override
+    public RaceBuilder modifyCombatStats(CombatStats combatStats) {
+        combatStats.setAttack(combatStats.getAttack() + 6);
+        combatStats.setDefense(combatStats.getDefense() + 8);
+        combatStats.setMagicAttack(combatStats.getMagicAttack() + 12);
+        combatStats.setMagicDefense(combatStats.getMagicDefense() + 12);
+        combatStats.setEvasion(combatStats.getEvasion() + 12);
         return this;
     }
 

@@ -6,6 +6,7 @@ public class CharacterClass {
     private String name;
     private int startingHealth;
     private CharacterResource primaryResource;
+    private int healthPerLevel;
 
     public String getName() {
         return name;
@@ -29,5 +30,13 @@ public class CharacterClass {
 
     public void setPrimaryResource(CharacterResource primaryResource) {
         this.primaryResource = primaryResource;
+    }
+
+    public int getHealthPerLevel() {
+        return healthPerLevel;
+    }
+
+    public void setHealthPerLevel(int newHealthPerLevel) {
+        healthPerLevel = newHealthPerLevel;
     }
 }

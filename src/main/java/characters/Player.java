@@ -3,6 +3,7 @@ package characters;
 import characters.classes.CharacterClass;
 import characters.races.Race;
 import characters.resources.CharacterResource;
+import characters.stats.CombatStats;
 
 public class Player {
     private CharacterResource health;
@@ -11,7 +12,17 @@ public class Player {
     private Race race;
     private CharacterClass characterClass;
 
-    public Player(Race race, CharacterClass characterClass) {
+    private CombatStats combatStats;
+
+    /**
+     * Creates a new Player character.
+     * @param race the race of the character.
+     * @param characterClass the class of the character.
+     */
+    public Player(Race race, CharacterClass characterClass, CombatStats combatStats) {
+        this.race = race;
+        this.characterClass = characterClass;
+        this.combatStats = combatStats;
         health = new CharacterResource("Health", race.getStartingHealth()
                 + characterClass.getStartingHealth());
         primaryResource = characterClass.getPrimaryResource();
@@ -31,5 +42,9 @@ public class Player {
 
     public CharacterClass getCharacterClass() {
         return characterClass;
+    }
+
+    public CombatStats getCombatStats() {
+        return combatStats;
     }
 }

@@ -73,12 +73,13 @@
       <p>SpotBugs version: 4.0.0-beta4</p>
       <p>Code analyzed:</p>
       <ul>
-         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\Character.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\classes\CharacterClass.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\classes\CharacterClassBuilder.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\classes\implementations\FighterClassBuilder.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\classes\implementations\ThiefClassBuilder.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\classes\implementations\WizardClassBuilder.class</li>
+         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\Monster.class</li>
+         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\Player.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\races\implementations\DwarfRaceBuilder.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\races\implementations\ElfRaceBuilder.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\races\implementations\HumanRaceBuilder.class</li>
@@ -87,6 +88,7 @@
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\races\RaceBuilder.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\resources\CharacterResource.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\resources\CharacterResourceObserver.class</li>
+         <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\characters\stats\CombatStats.class</li>
          <li>C:\Users\bobby\Desktop\School\SER316\Assignments\RPG\Assignment5b-RPG\build\classes\java\main\Main.class</li>
       </ul>
       <p>
@@ -94,9 +96,9 @@
          <br/>
       </p>
       <h2>Metrics</h2>
-      <p>237 lines of code analyzed,
-	in 15 classes, 
-	in 7 packages.</p>
+      <p>284 lines of code analyzed,
+	in 17 classes, 
+	in 8 packages.</p>
       <table width="500" cellpadding="5" cellspacing="2">
          <tr class="tableheader">
             <th align="left">Metric</th>
@@ -110,18 +112,18 @@
          </tr>
          <tr class="tablerow1">
             <td>Medium Priority Warnings</td>
-            <td align="right">10</td>
-            <td align="right">42.19</td>
+            <td align="right">5</td>
+            <td align="right">17.61</td>
          </tr>
          <tr class="$totalClass">
             <td>
                <b>Total Warnings</b>
             </td>
             <td align="right">
-               <b>10</b>
+               <b>5</b>
             </td>
             <td align="right">
-               <b>42.19</b>
+               <b>17.61</b>
             </td>
          </tr>
       </table>
@@ -134,9 +136,6 @@
       </p>
       <h2>Contents</h2>
       <ul>
-         <li>
-            <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
-         </li>
          <li>
             <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
          </li>
@@ -152,106 +151,21 @@
          </tr>
          <tr class="tablerow0">
             <td>
-               <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+               <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
             </td>
             <td align="right">5</td>
          </tr>
          <tr class="tablerow1">
             <td>
-               <a href="#Warnings_PERFORMANCE">Performance Warnings</a>
-            </td>
-            <td align="right">5</td>
-         </tr>
-         <tr class="tablerow0">
-            <td>
                <b>Total</b>
             </td>
             <td align="right">
-               <b>10</b>
+               <b>5</b>
             </td>
          </tr>
       </table>
       <h1>Warnings</h1>
       <p>Click on a warning row to see full context information.</p>
-      <h2>
-         <a name="Warnings_CORRECTNESS">Correctness Warnings</a>
-      </h2>
-      <table class="warningtable" width="100%" cellspacing="0">
-         <tr class="tableheader">
-            <th align="left">Code</th>
-            <th align="left">Warning</th>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e75');">
-            <td>
-               <span class="priority-2">NP</span>
-            </td>
-            <td>Read of unwritten field observers in characters.resources.CharacterResource.addObserver(CharacterResourceObserver)</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e75" style="display: none;">
-                  <a href="#NP_UNWRITTEN_FIELD">Bug type NP_UNWRITTEN_FIELD (click for details)</a>
-                  <br/>In class characters.resources.CharacterResource<br/>In method characters.resources.CharacterResource.addObserver(CharacterResourceObserver)<br/>Field characters.resources.CharacterResource.observers<br/>At CharacterResource.java:[line 88]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e91');">
-            <td>
-               <span class="priority-2">NP</span>
-            </td>
-            <td>Read of unwritten field observers in characters.resources.CharacterResource.removeObserver(CharacterResourceObserver)</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e91" style="display: none;">
-                  <a href="#NP_UNWRITTEN_FIELD">Bug type NP_UNWRITTEN_FIELD (click for details)</a>
-                  <br/>In class characters.resources.CharacterResource<br/>In method characters.resources.CharacterResource.removeObserver(CharacterResourceObserver)<br/>Field characters.resources.CharacterResource.observers<br/>At CharacterResource.java:[line 92]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e107');">
-            <td>
-               <span class="priority-2">NP</span>
-            </td>
-            <td>Read of unwritten field observers in characters.resources.CharacterResource.setCurrentValue(int)</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e107" style="display: none;">
-                  <a href="#NP_UNWRITTEN_FIELD">Bug type NP_UNWRITTEN_FIELD (click for details)</a>
-                  <br/>In class characters.resources.CharacterResource<br/>In method characters.resources.CharacterResource.setCurrentValue(int)<br/>Field characters.resources.CharacterResource.observers<br/>At CharacterResource.java:[line 63]</p>
-            </td>
-         </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e123');">
-            <td>
-               <span class="priority-2">NP</span>
-            </td>
-            <td>Read of unwritten field observers in characters.resources.CharacterResource.setMaxValue(int)</td>
-         </tr>
-         <tr class="detailrow0">
-            <td/>
-            <td>
-               <p id="d1e123" style="display: none;">
-                  <a href="#NP_UNWRITTEN_FIELD">Bug type NP_UNWRITTEN_FIELD (click for details)</a>
-                  <br/>In class characters.resources.CharacterResource<br/>In method characters.resources.CharacterResource.setMaxValue(int)<br/>Field characters.resources.CharacterResource.observers<br/>At CharacterResource.java:[line 78]</p>
-            </td>
-         </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e152');">
-            <td>
-               <span class="priority-2">UwF</span>
-            </td>
-            <td>Unwritten field: characters.resources.CharacterResource.observers</td>
-         </tr>
-         <tr class="detailrow1">
-            <td/>
-            <td>
-               <p id="d1e152" style="display: none;">
-                  <a href="#UWF_UNWRITTEN_FIELD">Bug type UWF_UNWRITTEN_FIELD (click for details)</a>
-                  <br/>In class characters.resources.CharacterResource<br/>Field characters.resources.CharacterResource.observers<br/>At CharacterResource.java:[line 63]</p>
-            </td>
-         </tr>
-      </table>
       <h2>
          <a name="Warnings_PERFORMANCE">Performance Warnings</a>
       </h2>
@@ -260,74 +174,74 @@
             <th align="left">Code</th>
             <th align="left">Warning</th>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e23');">
+         <tr class="tablerow1" onclick="toggleRow('d1e25');">
             <td>
-               <span class="priority-2">UrF</span>
+               <span class="priority-2">UuF</span>
             </td>
-            <td>Unread field: characters.Character.health</td>
+            <td>Unused field: characters.stats.CombatStats.attack</td>
          </tr>
          <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e23" style="display: none;">
-                  <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
-                  <br/>In class characters.Character<br/>Field characters.Character.health<br/>At Character.java:[line 16]</p>
+               <p id="d1e25" style="display: none;">
+                  <a href="#UUF_UNUSED_FIELD">Bug type UUF_UNUSED_FIELD (click for details)</a>
+                  <br/>In class characters.stats.CombatStats<br/>Field characters.stats.CombatStats.attack<br/>In CombatStats.java</p>
             </td>
          </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e36');">
+         <tr class="tablerow0" onclick="toggleRow('d1e38');">
             <td>
-               <span class="priority-2">UrF</span>
+               <span class="priority-2">UuF</span>
             </td>
-            <td>Unread field: characters.Character.primaryResource</td>
+            <td>Unused field: characters.stats.CombatStats.defense</td>
          </tr>
          <tr class="detailrow0">
             <td/>
             <td>
-               <p id="d1e36" style="display: none;">
-                  <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
-                  <br/>In class characters.Character<br/>Field characters.Character.primaryResource<br/>At Character.java:[line 17]</p>
+               <p id="d1e38" style="display: none;">
+                  <a href="#UUF_UNUSED_FIELD">Bug type UUF_UNUSED_FIELD (click for details)</a>
+                  <br/>In class characters.stats.CombatStats<br/>Field characters.stats.CombatStats.defense<br/>In CombatStats.java</p>
             </td>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e139');">
+         <tr class="tablerow1" onclick="toggleRow('d1e51');">
             <td>
-               <span class="priority-2">UrF</span>
+               <span class="priority-2">UuF</span>
             </td>
-            <td>Unread field: characters.resources.CharacterResource.resourceName</td>
+            <td>Unused field: characters.stats.CombatStats.evasion</td>
          </tr>
          <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e139" style="display: none;">
-                  <a href="#URF_UNREAD_FIELD">Bug type URF_UNREAD_FIELD (click for details)</a>
-                  <br/>In class characters.resources.CharacterResource<br/>Field characters.resources.CharacterResource.resourceName<br/>At CharacterResource.java:[line 19]</p>
+               <p id="d1e51" style="display: none;">
+                  <a href="#UUF_UNUSED_FIELD">Bug type UUF_UNUSED_FIELD (click for details)</a>
+                  <br/>In class characters.stats.CombatStats<br/>Field characters.stats.CombatStats.evasion<br/>In CombatStats.java</p>
             </td>
          </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e49');">
+         <tr class="tablerow0" onclick="toggleRow('d1e64');">
             <td>
                <span class="priority-2">UuF</span>
             </td>
-            <td>Unused field: characters.Character.characterClass</td>
+            <td>Unused field: characters.stats.CombatStats.magicAttack</td>
          </tr>
          <tr class="detailrow0">
             <td/>
             <td>
-               <p id="d1e49" style="display: none;">
+               <p id="d1e64" style="display: none;">
                   <a href="#UUF_UNUSED_FIELD">Bug type UUF_UNUSED_FIELD (click for details)</a>
-                  <br/>In class characters.Character<br/>Field characters.Character.characterClass<br/>In Character.java</p>
+                  <br/>In class characters.stats.CombatStats<br/>Field characters.stats.CombatStats.magicAttack<br/>In CombatStats.java</p>
             </td>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e62');">
+         <tr class="tablerow1" onclick="toggleRow('d1e77');">
             <td>
                <span class="priority-2">UuF</span>
             </td>
-            <td>Unused field: characters.Character.race</td>
+            <td>Unused field: characters.stats.CombatStats.magicDefense</td>
          </tr>
          <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e62" style="display: none;">
+               <p id="d1e77" style="display: none;">
                   <a href="#UUF_UNUSED_FIELD">Bug type UUF_UNUSED_FIELD (click for details)</a>
-                  <br/>In class characters.Character<br/>Field characters.Character.race<br/>In Character.java</p>
+                  <br/>In class characters.stats.CombatStats<br/>Field characters.stats.CombatStats.magicDefense<br/>In CombatStats.java</p>
             </td>
          </tr>
       </table>
@@ -335,32 +249,10 @@
          <a name="Details">Details</a>
       </h1>
       <h2>
-         <a name="NP_UNWRITTEN_FIELD">NP_UNWRITTEN_FIELD: Read of unwritten field</a>
-      </h2>
-
-  <p> The program is dereferencing a field that does not seem to ever have a non-null value written to it.
-Unless the field is initialized via some mechanism not seen by the analysis,
-dereferencing this value will generate a null pointer exception.
-</p>
-
-    <h2>
-         <a name="URF_UNREAD_FIELD">URF_UNREAD_FIELD: Unread field</a>
-      </h2>
-
-  <p> This field is never read.&nbsp; Consider removing it from the class.</p>
-
-    <h2>
          <a name="UUF_UNUSED_FIELD">UUF_UNUSED_FIELD: Unused field</a>
       </h2>
 
   <p> This field is never used.&nbsp; Consider removing it from the class.</p>
-
-    <h2>
-         <a name="UWF_UNWRITTEN_FIELD">UWF_UNWRITTEN_FIELD: Unwritten field</a>
-      </h2>
-
-  <p> This field is never written.&nbsp; All reads of it will return the default
-value. Check for errors (should it have been initialized?), or remove it if it is useless.</p>
 
     </body>
 </html>

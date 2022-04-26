@@ -1,6 +1,7 @@
 package characters.classes;
 
 import characters.races.Race;
+import characters.stats.CombatStats;
 
 public interface CharacterClassBuilder {
     CharacterClassBuilder buildName();
@@ -9,5 +10,9 @@ public interface CharacterClassBuilder {
 
     CharacterClassBuilder buildPrimaryResource(Race race);
 
-    public CharacterClass getCharacterClass();
+    CharacterClassBuilder buildHealthPerLevel();
+
+    CharacterClassBuilder modifyCombatStats(CombatStats combatStats);
+
+    CharacterClass getCharacterClass();
 }
