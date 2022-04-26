@@ -6,6 +6,8 @@ import characters.races.Race;
 import characters.resources.CharacterResource;
 import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
+import characters.stats.MultiplicativeModifier;
+import combat.Combat;
 import combat.abilities.Ability;
 import combat.abilities.Targettable;
 import combat.abilities.AbilityAction;
@@ -51,15 +53,29 @@ public class WizardClassBuilder implements CharacterClassBuilder {
     @Override
     public CharacterClassBuilder buildStartingAbilities() {
         Ability attack = new Ability("Attack");
-        attack.addAction(new AbilityAction() {
-            @Override
-            public void execute(Targettable caster, Targettable target) {
-                int damage = caster.getCombatStats().getStat(CombatStatType.ATTACK).getValue()
-                        - target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
+        attack.addAction((user, target) -> {
+            int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
+            damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
+            target.getHealth().modifyCurrentValue(-damage);
+        });
+        startingAbilities.add(attack);
+
+        Ability defend = new Ability("Defend");
+        defend.addAction((user, target) -> { target.getCombatStats().getStat(CombatStatType.DEFENSE)
+                .addModifier(new MultiplicativeModifier(2.0, 1));
+        });
+        startingAbilities.add(defend);
+
+        Ability magicMissiles = new Ability("Magic Missiles");
+        attack.addAction((user, target) -> {
+            int dartDamage = (int)(user.getCombatStats().getStat(CombatStatType.MAGIC_ATTACK).getValue() * 0.75);
+            for (int i = 0; i < 3; i++) {
+                int damage = Combat.calculateDamageRange(dartDamage);
+                damage -= target.getCombatStats().getStat(CombatStatType.MAGIC_DEFENSE).getValue();
                 target.getHealth().modifyCurrentValue(-damage);
             }
         });
-        startingAbilities.add(attack);
+        startingAbilities.add(magicMissiles);
 
         characterClass.setStartingAbilities(startingAbilities);
         return this;

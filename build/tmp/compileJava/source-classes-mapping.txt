@@ -30,9 +30,10 @@ characters/Player.java
  characters.Player
 characters/classes/implementations/ThiefClassBuilder.java
  characters.classes.implementations.ThiefClassBuilder
- characters.classes.implementations.ThiefClassBuilder$1
 characters/races/Race.java
  characters.races.Race
+combat/Combatant.java
+ combat.Combatant
 characters/stats/AdditiveModifier.java
  characters.stats.AdditiveModifier
 characters/classes/CharacterClassBuilder.java
@@ -64,15 +65,12 @@ characters/stats/CombatStatModifier.java
  characters.stats.CombatStatModifier
 characters/classes/implementations/WizardClassBuilder.java
  characters.classes.implementations.WizardClassBuilder
- characters.classes.implementations.WizardClassBuilder$1
 characters/levels/Level.java
  characters.levels.Level
 characters/races/implementations/DwarfRaceBuilder.java
  characters.races.implementations.DwarfRaceBuilder
 characters/classes/implementations/FighterClassBuilder.java
  characters.classes.implementations.FighterClassBuilder
- characters.classes.implementations.FighterClassBuilder$1
- characters.classes.implementations.FighterClassBuilder$2
 characters/inventory/EquipmentSlot.java
  characters.inventory.EquipmentSlot
 characters/inventory/Inventory.java

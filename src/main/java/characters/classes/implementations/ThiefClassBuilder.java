@@ -6,6 +6,8 @@ import characters.races.Race;
 import characters.resources.CharacterResource;
 import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
+import characters.stats.MultiplicativeModifier;
+import combat.Combat;
 import combat.abilities.Ability;
 import combat.abilities.Targettable;
 import combat.abilities.AbilityAction;
@@ -50,15 +52,26 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
     @Override
     public CharacterClassBuilder buildStartingAbilities() {
         Ability attack = new Ability("Attack");
-        attack.addAction(new AbilityAction() {
-            @Override
-            public void execute(Targettable caster, Targettable target) {
-                int damage = caster.getCombatStats().getStat(CombatStatType.ATTACK).getValue()
-                        - target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
-                target.getHealth().modifyCurrentValue(-damage);
-            }
+        attack.addAction((user, target) -> {
+            int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
+            damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
+            target.getHealth().modifyCurrentValue(-damage);
         });
         startingAbilities.add(attack);
+
+        Ability defend = new Ability("Defend");
+        defend.addAction((user, target) -> {
+            target.getCombatStats().getStat(CombatStatType.DEFENSE)
+                .addModifier(new MultiplicativeModifier(2.0, 1));
+        });
+        startingAbilities.add(defend);
+
+        Ability sneakAttack = new Ability("Sneak Attack", 25);
+        sneakAttack.addAction((user, target) -> {
+            int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * 2);
+            damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
+            target.getHealth().modifyCurrentValue(-damage);
+        });
 
         characterClass.setStartingAbilities(startingAbilities);
         return this;

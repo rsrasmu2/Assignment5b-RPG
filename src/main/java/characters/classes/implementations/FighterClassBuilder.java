@@ -54,26 +54,26 @@ public class FighterClassBuilder implements CharacterClassBuilder {
     @Override
     public CharacterClassBuilder buildStartingAbilities() {
         Ability attack = new Ability("Attack");
-        attack.addAction(new AbilityAction() {
-            @Override
-            public void execute(Targettable caster, Targettable target) {
-                int damage = Combat.calculateDamageRange(caster.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
-                damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
-                target.getHealth().modifyCurrentValue(-damage);
-                caster.getPrimaryResource().modifyCurrentValue(damage);
-            }
+        attack.addAction((user, target) -> {
+            int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
+            damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
+            target.getHealth().modifyCurrentValue(-damage);
+            user.getPrimaryResource().modifyCurrentValue(10);
         });
         startingAbilities.add(attack);
 
         Ability defend = new Ability("Defend");
-        defend.addAction(new AbilityAction() {
-            @Override
-            public void execute(Targettable caster, Targettable target) {
-                target.getCombatStats().getStat(CombatStatType.DEFENSE)
-                        .addModifier(new MultiplicativeModifier(2.0, 1));
-            }
+        defend.addAction((user, target) -> { target.getCombatStats().getStat(CombatStatType.DEFENSE)
+                .addModifier(new MultiplicativeModifier(2.0, 1));
         });
         startingAbilities.add(defend);
+
+        Ability powerAttack = new Ability("PowerAttack", 20);
+        powerAttack.addAction((user, target) -> {
+            int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * 3);
+            damage -= target.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
+            target.getHealth().modifyCurrentValue(-damage);
+        });
 
         characterClass.setStartingAbilities(startingAbilities);
         return this;
