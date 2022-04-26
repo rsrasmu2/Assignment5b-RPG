@@ -1,15 +1,47 @@
 package characters;
 
 import characters.resources.CharacterResource;
+import characters.stats.CombatStats;
+import combat.abilities.Abilities;
+import combat.abilities.Targettable;
 
-public class Monster {
+public class Monster implements Targettable {
+    private String name;
+
     private CharacterResource health;
+    private CharacterResource primaryResource;
 
-    public Monster(int startingHealth) {
+    private CombatStats combatStats;
+
+    private Abilities abilities;
+
+    public Monster(String name, int startingHealth, CombatStats combatStats) {
+        this.name = name;
         health = new CharacterResource("Health", startingHealth);
+        primaryResource = new CharacterResource("None", 0);
+        this.combatStats = combatStats;
+        this.abilities = new Abilities();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public CharacterResource getHealth() {
         return health;
+    }
+
+    @Override
+    public CharacterResource getPrimaryResource() {
+        return primaryResource;
+    }
+
+    public CombatStats getCombatStats() {
+        return combatStats;
+    }
+
+    @Override
+    public Abilities GetAbilities() {
+        return abilities;
     }
 }

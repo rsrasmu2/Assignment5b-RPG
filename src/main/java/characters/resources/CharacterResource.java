@@ -36,11 +36,11 @@ public class CharacterResource {
         currentValue = startingCurrentValue;
     }
 
-    int getCurrentValue() {
+    public int getCurrentValue() {
         return currentValue;
     }
 
-    int getMaxValue() {
+    public int getMaxValue() {
         return maxValue;
     }
 
@@ -68,6 +68,10 @@ public class CharacterResource {
         }
     }
 
+    public void modifyCurrentValue(int modifier) {
+        setCurrentValue(getCurrentValue() + modifier);
+    }
+
     /**
      * sets the new maximum value of the resource.
      * @param newMaxValue the new maximum value of the resource.
@@ -85,6 +89,10 @@ public class CharacterResource {
         if (currentValue > maxValue) {
             setCurrentValue(maxValue);
         }
+    }
+
+    public void modifyMaxValue(int modifier) {
+        setMaxValue(getMaxValue() + modifier);
     }
 
     @Override

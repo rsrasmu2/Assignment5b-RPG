@@ -14,5 +14,7 @@ public interface CharacterClassBuilder {
 
     CharacterClassBuilder modifyCombatStats(CombatStats combatStats);
 
+    CharacterClassBuilder buildAbilities();
+
     CharacterClass getCharacterClass();
 }

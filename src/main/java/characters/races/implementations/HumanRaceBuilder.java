@@ -2,6 +2,7 @@ package characters.races.implementations;
 
 import characters.races.Race;
 import characters.races.RaceBuilder;
+import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
 
 public class HumanRaceBuilder implements RaceBuilder {
@@ -31,11 +32,11 @@ public class HumanRaceBuilder implements RaceBuilder {
 
     @Override
     public RaceBuilder modifyCombatStats(CombatStats combatStats) {
-        combatStats.setAttack(combatStats.getAttack() + 10);
-        combatStats.setDefense(combatStats.getDefense() + 10);
-        combatStats.setMagicAttack(combatStats.getMagicAttack() + 10);
-        combatStats.setMagicDefense(combatStats.getMagicDefense() + 10);
-        combatStats.setEvasion(combatStats.getEvasion() + 10);
+        combatStats.getStat(CombatStatType.ATTACK).modifyBaseValue(10);
+        combatStats.getStat(CombatStatType.DEFENSE).modifyBaseValue(10);
+        combatStats.getStat(CombatStatType.MAGIC_ATTACK).modifyBaseValue(10);
+        combatStats.getStat(CombatStatType.MAGIC_DEFENSE).modifyBaseValue(10);
+        combatStats.getStat(CombatStatType.EVASION).modifyBaseValue(10);
         return this;
     }
 

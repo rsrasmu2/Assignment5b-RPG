@@ -4,6 +4,7 @@ import characters.classes.CharacterClass;
 import characters.classes.CharacterClassBuilder;
 import characters.races.Race;
 import characters.resources.CharacterResource;
+import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
 
 public class WizardClassBuilder implements CharacterClassBuilder {
@@ -40,11 +41,11 @@ public class WizardClassBuilder implements CharacterClassBuilder {
 
     @Override
     public CharacterClassBuilder modifyCombatStats(CombatStats combatStats) {
-        combatStats.setAttack(combatStats.getAttack() + 6);
-        combatStats.setDefense(combatStats.getDefense() + 6);
-        combatStats.setMagicAttack(combatStats.getMagicAttack() + 12);
-        combatStats.setMagicDefense(combatStats.getMagicDefense() + 10);
-        combatStats.setEvasion(combatStats.getEvasion() + 8);
+        combatStats.getStat(CombatStatType.ATTACK).modifyBaseValue(6);
+        combatStats.getStat(CombatStatType.DEFENSE).modifyBaseValue(6);
+        combatStats.getStat(CombatStatType.MAGIC_ATTACK).modifyBaseValue(12);
+        combatStats.getStat(CombatStatType.MAGIC_DEFENSE).modifyBaseValue(10);
+        combatStats.getStat(CombatStatType.EVASION).modifyBaseValue(8);
         return this;
     }
 

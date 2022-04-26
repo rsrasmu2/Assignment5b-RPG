@@ -4,6 +4,7 @@ import characters.classes.CharacterClass;
 import characters.classes.CharacterClassBuilder;
 import characters.races.Race;
 import characters.resources.CharacterResource;
+import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
 
 public class ThiefClassBuilder implements CharacterClassBuilder {
@@ -39,11 +40,11 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
 
     @Override
     public CharacterClassBuilder modifyCombatStats(CombatStats combatStats) {
-        combatStats.setAttack(combatStats.getAttack() + 12);
-        combatStats.setDefense(combatStats.getDefense() + 8);
-        combatStats.setMagicAttack(combatStats.getMagicAttack() + 6);
-        combatStats.setMagicDefense(combatStats.getMagicDefense() + 8);
-        combatStats.setEvasion(combatStats.getEvasion() + 10);
+        combatStats.getStat(CombatStatType.ATTACK).modifyBaseValue(12);
+        combatStats.getStat(CombatStatType.DEFENSE).modifyBaseValue(8);
+        combatStats.getStat(CombatStatType.MAGIC_ATTACK).modifyBaseValue(6);
+        combatStats.getStat(CombatStatType.MAGIC_DEFENSE).modifyBaseValue(8);
+        combatStats.getStat(CombatStatType.EVASION).modifyBaseValue(10);
         return this;
     }
 

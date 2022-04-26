@@ -1,34 +1,64 @@
 characters/resources/CharacterResourceObserver.java
  characters.resources.CharacterResourceObserver
-characters/races/Race.java
- characters.races.Race
-characters/Monster.java
- characters.Monster
-characters/resources/CharacterResource.java
- characters.resources.CharacterResource
-characters/classes/CharacterClass.java
- characters.classes.CharacterClass
-characters/races/implementations/DwarfRaceBuilder.java
- characters.races.implementations.DwarfRaceBuilder
-characters/classes/CharacterClassBuilder.java
- characters.classes.CharacterClassBuilder
-characters/classes/implementations/FighterClassBuilder.java
- characters.classes.implementations.FighterClassBuilder
+combat/Combat.java
+ combat.Combat
+characters/stats/MultiplicativeModifier.java
+ characters.stats.MultiplicativeModifier
+combat/abilities/actions/Action.java
+ combat.abilities.actions.Action
+characters/stats/CombatStatType.java
+ characters.stats.CombatStatType
 Main.java
  Main
+characters/resources/CharacterResource.java
+ characters.resources.CharacterResource
 characters/stats/CombatStats.java
  characters.stats.CombatStats
-characters/races/RaceBuilder.java
- characters.races.RaceBuilder
-characters/races/implementations/HumanRaceBuilder.java
- characters.races.implementations.HumanRaceBuilder
+characters/levels/LevelObserver.java
+ characters.levels.LevelObserver
 characters/Player.java
  characters.Player
 characters/classes/implementations/ThiefClassBuilder.java
  characters.classes.implementations.ThiefClassBuilder
-characters/races/implementations/OrcRaceBuilder.java
- characters.races.implementations.OrcRaceBuilder
+characters/races/Race.java
+ characters.races.Race
+combat/abilities/AbilityTarget.java
+ combat.abilities.AbilityTarget
+characters/stats/AdditiveModifier.java
+ characters.stats.AdditiveModifier
+characters/classes/CharacterClassBuilder.java
+ characters.classes.CharacterClassBuilder
+characters/stats/CombatStatModifierDuration.java
+ characters.stats.CombatStatModifierDuration
+characters/stats/CombatStatObserver.java
+ characters.stats.CombatStatObserver
+characters/races/RaceBuilder.java
+ characters.races.RaceBuilder
+characters/stats/CombatStat.java
+ characters.stats.CombatStat
+characters/races/implementations/HumanRaceBuilder.java
+ characters.races.implementations.HumanRaceBuilder
+combat/abilities/Ability.java
+ combat.abilities.Ability
+characters/Monster.java
+ characters.Monster
 characters/races/implementations/ElfRaceBuilder.java
  characters.races.implementations.ElfRaceBuilder
+characters/classes/CharacterClass.java
+ characters.classes.CharacterClass
+characters/stats/CombatStatModifier.java
+ characters.stats.CombatStatModifier
 characters/classes/implementations/WizardClassBuilder.java
  characters.classes.implementations.WizardClassBuilder
+characters/levels/Level.java
+ characters.levels.Level
+characters/races/implementations/DwarfRaceBuilder.java
+ characters.races.implementations.DwarfRaceBuilder
+characters/classes/implementations/FighterClassBuilder.java
+ characters.classes.implementations.FighterClassBuilder
+combat/abilities/implementations/AttackAbility.java
+ combat.abilities.implementations.AttackAbility
+combat/abilities/actions/DealPhysicalDamageAction.java
+ combat.abilities.actions.DealPhysicalDamageAction
+characters/races/implementations/OrcRaceBuilder.java
+ characters.races.implementations.OrcRaceBuilder

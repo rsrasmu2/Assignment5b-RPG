@@ -1,3 +1,4 @@
+import characters.Monster;
 import characters.Player;
 import characters.classes.CharacterClass;
 import characters.classes.implementations.WizardClassBuilder;
@@ -28,11 +29,9 @@ public class Main {
                 .getCharacterClass();
 
         Player player = new Player(human, wizard, combatStats);
+        Monster monster = new Monster("Goblin", 6, new CombatStats(10, 5, 10, 5, 13));
 
-        System.out.println(player.getRace().getName());
-        System.out.println(player.getCharacterClass().getName());
-        System.out.println(player.getHealth().toString());
-        System.out.println(player.getPrimaryResource().toString());
-        System.out.println(player.getCombatStats().toString());
+
+        System.out.println("Monster " + monster.getHealth().toString());
     }
 }

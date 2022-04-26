@@ -4,8 +4,9 @@ import characters.classes.CharacterClass;
 import characters.races.Race;
 import characters.resources.CharacterResource;
 import characters.stats.CombatStats;
+import combat.abilities.Targettable;
 
-public class Player {
+public class Player implements Targettable {
     private CharacterResource health;
     private CharacterResource primaryResource;
 

@@ -1,70 +1,37 @@
 package characters.stats;
 
+import java.util.HashMap;
+
 public class CombatStats {
-    private int attack;
-    private int defense;
-    private int magicAttack;
-    private int magicDefense;
-    private int evasion;
+    private HashMap<CombatStatType, CombatStat> stats;
 
     public CombatStats() {
-        attack = 0;
-        defense = 0;
-        magicAttack = 0;
-        magicDefense = 0;
-        evasion = 0;
+        stats = new HashMap();
+        stats.put(CombatStatType.ATTACK, new CombatStat(0));
+        stats.put(CombatStatType.DEFENSE, new CombatStat(0));
+        stats.put(CombatStatType.MAGIC_ATTACK, new CombatStat(0));
+        stats.put(CombatStatType.MAGIC_DEFENSE, new CombatStat(0));
+        stats.put(CombatStatType.EVASION, new CombatStat(0));
     }
 
     public CombatStats(int attack, int defense, int magicAttack, int magicDefense, int evasion) {
-        this.attack = attack;
-        this.defense = defense;
-        this.magicAttack = magicAttack;
-        this.magicDefense = magicDefense;
-        this.evasion = evasion;
+        stats = new HashMap();
+        stats.put(CombatStatType.ATTACK, new CombatStat(attack));
+        stats.put(CombatStatType.DEFENSE, new CombatStat(defense));
+        stats.put(CombatStatType.MAGIC_ATTACK, new CombatStat(magicAttack));
+        stats.put(CombatStatType.MAGIC_DEFENSE, new CombatStat(magicDefense));
+        stats.put(CombatStatType.EVASION, new CombatStat(evasion));
     }
 
-    public int getAttack() {
-        return attack;
-    }
-
-    public void setAttack(int attack) {
-        this.attack = attack;
-    }
-
-    public int getDefense() {
-        return defense;
-    }
-
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
-    public int getMagicAttack() {
-        return magicAttack;
-    }
-
-    public void setMagicAttack(int magicAttack) {
-        this.magicAttack = magicAttack;
-    }
-
-    public int getMagicDefense() {
-        return magicDefense;
-    }
-
-    public void setMagicDefense(int magicDefense) {
-        this.magicDefense = magicDefense;
-    }
-
-    public int getEvasion() {
-        return evasion;
-    }
-
-    public void setEvasion(int evasion) {
-        this.evasion = evasion;
+    public CombatStat getStat(CombatStatType combatStatType) {
+        return stats.get(combatStatType);
     }
 
     public String toString() {
-        return "CombatStats:\nAttack: " + attack +"\nDefense: " + defense + "\nMagic Attack: "
-                + magicAttack + "\nMagic Defense: " + magicDefense + "\nEvasion: " + evasion;
+        return "CombatStats:\nAttack: " + stats.get(CombatStatType.ATTACK)
+                + "\nDefense: " + stats.get(CombatStatType.DEFENSE)
+                + "\nMagic Attack: " + stats.get(CombatStatType.MAGIC_ATTACK)
+                + "\nMagic Defense: " + stats.get(CombatStatType.MAGIC_DEFENSE)
+                + "\nEvasion: " + stats.get(CombatStatType.EVASION);
     }
 }
