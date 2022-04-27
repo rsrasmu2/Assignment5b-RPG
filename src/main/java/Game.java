@@ -15,7 +15,10 @@ import characters.stats.CombatStats;
 import combat.Combat;
 import combat.abilities.Abilities;
 import dungeon.Dungeon;
+import items.Consumable;
 import items.Equippable;
+import items.consumables.HealingPotion;
+import town.Town;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,15 +30,24 @@ public class Game {
         this.reader = reader;
     }
 
+    /**
+     * Begins the game
+     * @throws IOException BufferReader exception
+     */
     public void begin() throws IOException {
         Player player = createPlayer();
-        var rustySword = new Equippable("Rusty Sword", EquipmentSlot.WEAPON, 10, 0, 0, 0, 0);
+
+        Equippable rustySword = new Equippable("Rusty Sword", 5, EquipmentSlot.WEAPON, 10, 0, 0, 0, 0);
         player.getInventory().getEquipment().equip(rustySword);
 
-        System.out.println(player.getInventory().toString());
+        Equippable clothShirt = new Equippable("Cloth Shirt", 5, EquipmentSlot.ARMOR, 0, 5, 0, 2, 0);
+        player.getInventory().getEquipment().equip(clothShirt);
 
-        Dungeon dungeon = new Dungeon();
-        dungeon.begin(player, reader);
+        Consumable healingPotion = new HealingPotion();
+        player.getInventory().getConsumables().addConsumable(healingPotion);
+
+        Town town = new Town(player);
+        town.enter(reader);
     }
 
     /**

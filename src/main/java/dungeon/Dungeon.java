@@ -26,17 +26,25 @@ public class Dungeon {
             currentRoom.enter(player, reader);
             if (player.getHealth().getCurrentValue() == 0) {
                 System.out.println("Returning to town...\n----------");
-                break;
+                return;
             }
-            roomNumber++;
-            if (roomNumber == ROOMS_PER_FLOOR + 1) {
-                System.out.println("You find a stairway leading further down...\n----------");
-                floorNumber++;
-                roomNumber = 1;
-                if (floorNumber == MAX_FLOORS + 1) {
-                    System.out.println("Congratulations! You win!");
-                    break;
+            System.out.println("1. Continue\n2. Return to town");
+            String input = reader.readLine();
+            if (input.equals("1")) {
+                roomNumber++;
+                if (roomNumber == ROOMS_PER_FLOOR + 1) {
+                    System.out.println("You find a stairway leading further down...\n----------");
+                    floorNumber++;
+                    roomNumber = 1;
+                    if (floorNumber == MAX_FLOORS + 1) {
+                        System.out.println("Congratulations! You win!");
+                        return;
+                    }
                 }
+            } else if (input.equals("2")) {
+                return;
+            } else {
+                System.out.println("Invalid selection");
             }
         }
     }

@@ -1,12 +1,13 @@
 package items;
 
-import characters.Player;
 import characters.inventory.EquipmentSlot;
 import characters.stats.AdditiveModifier;
 import characters.stats.CombatStatModifier;
 import characters.stats.CombatStatType;
 
 public class Equippable extends Item {
+    private int cost;
+
     private EquipmentSlot slot;
 
     private CombatStatModifier attackModifier;
@@ -15,8 +16,9 @@ public class Equippable extends Item {
     private CombatStatModifier magicDefenseModifier;
     private CombatStatModifier evasionModifier;
 
-    public Equippable(String name, EquipmentSlot slot, int attack, int defense, int magicAttack, int magicDefense, int evasion) {
-        super(name);
+    public Equippable(String name, int cost, EquipmentSlot slot, int attack, int defense, int magicAttack, int magicDefense, int evasion) {
+        super(name, cost);
+        this.cost = cost;
         this.slot = slot;
         attackModifier = new AdditiveModifier(attack);
         defenseModifier = new AdditiveModifier(defense);

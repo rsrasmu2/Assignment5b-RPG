@@ -10,6 +10,7 @@ import characters.stats.CombatStats;
 import combat.abilities.Abilities;
 import combat.abilities.Ability;
 import combat.abilities.Targettable;
+import items.Consumable;
 import items.Equipper;
 
 import java.io.BufferedReader;
@@ -97,8 +98,13 @@ public class Player implements Targettable, Equipper, LevelObserver {
         while (true) {
             System.out.println("Choose your ability:");
             for (int i = 0; i < abilities.getAbilities().size(); i++) {
-                System.out.println(i + " " + abilities.getAbilities().get(i));
+                System.out.println(i + ". " + abilities.getAbilities().get(i));
             }
+            for (int i = 0; i < inventory.getConsumables().getConsumables().size(); i++) {
+                System.out.println(abilities.getAbilities().size() + i + ". "
+                + getInventory().getConsumables().getConsumables().get(i).getName());
+            }
+
             String input = reader.readLine();
             int intInput = 0;
             try {
@@ -107,18 +113,23 @@ public class Player implements Targettable, Equipper, LevelObserver {
                 System.out.println("Select the number of the ability you wish to use.");
                 continue;
             }
-            if (intInput < 0 || intInput >= abilities.getAbilities().size()) {
+            if (intInput < 0 || intInput >= abilities.getAbilities().size() + inventory.getConsumables().getConsumables().size()) {
                 System.out.println("Select the number of the ability you wish to use.");
                 continue;
             }
-            Ability ability = abilities.getAbilities().get(intInput);
-            if (!ability.canExecute(this)) {
-                System.out.println("Not enough " + getPrimaryResource().getName() + ".");
-                continue;
+            if (intInput < abilities.getAbilities().size()) {
+                Ability ability = abilities.getAbilities().get(intInput - 1);
+                if (!ability.canExecute(this)) {
+                    System.out.println("Not enough " + getPrimaryResource().getName() + ".");
+                    continue;
+                }
+                System.out.println("You used " + ability.getName() + ".");
+                ability.execute(this, opponent);
+            } else {
+                inventory.getConsumables().use(this, intInput - abilities.getAbilities().size());
             }
-            System.out.println("You used " + ability.getName() + ".");
-            ability.execute(this, opponent);
             break;
+
         }
     }
 

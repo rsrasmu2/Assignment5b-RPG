@@ -4,11 +4,11 @@ import characters.stats.CombatStatType;
 import combat.Combat;
 import combat.abilities.Ability;
 
-public class FireboltAbility extends Ability {
+public class HowlAbility extends Ability {
     /**
-     * Creates a new Firebolt Ability
+     * Creates a new Howl Ability
      */
-    public FireboltAbility() {
+    public HowlAbility() {
         super("Firebolt");
         addAction(((user, opponent) -> {
             int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.MAGIC_ATTACK).getValue());

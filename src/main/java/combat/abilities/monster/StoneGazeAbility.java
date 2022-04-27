@@ -4,12 +4,12 @@ import characters.stats.CombatStatType;
 import combat.Combat;
 import combat.abilities.Ability;
 
-public class FireboltAbility extends Ability {
+public class StoneGazeAbility extends Ability {
     /**
-     * Creates a new Firebolt Ability
+     * Creates a new FireboltAbility
      */
-    public FireboltAbility() {
-        super("Firebolt");
+    public StoneGazeAbility() {
+        super("Noxious Breath");
         addAction(((user, opponent) -> {
             int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.MAGIC_ATTACK).getValue());
             damage -= opponent.getCombatStats().getStat(CombatStatType.MAGIC_DEFENSE).getValue();
