@@ -49,6 +49,7 @@ public class Player implements Targettable, Equipper, LevelObserver {
                 + characterClass.getStartingHealth());
         primaryResource = characterClass.getPrimaryResource();
         this.level = new Level();
+        level.addObserver(this);
         inventory = new Inventory(this);
         this.abilities = abilities;
     }
@@ -114,7 +115,7 @@ public class Player implements Targettable, Equipper, LevelObserver {
                 System.out.println("Select the number of the ability you wish to use.");
                 continue;
             }
-            if (intInput < 0 || intInput >= abilities.getAbilities().size()
+            if (intInput < 0 || intInput > abilities.getAbilities().size()
                     + inventory.getConsumables().getConsumables().size()) {
                 System.out.println("Select the number of the ability you wish to use.");
                 continue;
@@ -128,7 +129,10 @@ public class Player implements Targettable, Equipper, LevelObserver {
                 System.out.println("You used " + ability.getName() + ".");
                 ability.execute(this, opponent);
             } else {
-                inventory.getConsumables().use(this, intInput - abilities.getAbilities().size());
+                int index = intInput - abilities.getAbilities().size() - 1;
+                Consumable item = inventory.getConsumables().getConsumables().get(index);
+                System.out.println("You used " + item.getName() + ".");
+                inventory.getConsumables().use(this, index);
             }
             break;
 

@@ -36,7 +36,6 @@ public class FrostDrakeMonsterBuilder implements MonsterBuilder {
     public MonsterBuilder buildAbilities() {
         List<Ability> abilityList = new ArrayList();
         abilityList.add(new AttackAbility());
-        abilityList.add(new DefendAbility());
         abilityList.add(new NoxiousBreathAbility());
         monster.setAbilities(new Abilities(abilityList));
         return this;

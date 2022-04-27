@@ -153,6 +153,8 @@ public class Game {
                             .buildStartingHealth()
                             .buildPrimaryResource(playerRace)
                             .buildStartingAbilities()
+                            .buildHealthPerLevel()
+                            .buildCombatStatsPerLevel()
                             .modifyCombatStats(combatStats)
                             .getCharacterClass();
                     break;
@@ -162,6 +164,8 @@ public class Game {
                             .buildStartingHealth()
                             .buildPrimaryResource(playerRace)
                             .buildStartingAbilities()
+                            .buildHealthPerLevel()
+                            .buildCombatStatsPerLevel()
                             .modifyCombatStats(combatStats)
                             .getCharacterClass();
                     break;
@@ -171,6 +175,8 @@ public class Game {
                             .buildStartingHealth()
                             .buildPrimaryResource(playerRace)
                             .buildStartingAbilities()
+                            .buildHealthPerLevel()
+                            .buildCombatStatsPerLevel()
                             .modifyCombatStats(combatStats)
                             .getCharacterClass();
                     break;

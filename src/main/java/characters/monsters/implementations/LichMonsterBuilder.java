@@ -36,7 +36,6 @@ public class LichMonsterBuilder implements MonsterBuilder {
     public MonsterBuilder buildAbilities() {
         List<Ability> abilityList = new ArrayList();
         abilityList.add(new AttackAbility());
-        abilityList.add(new DefendAbility());
         abilityList.add(new DeathTouchAbility());
         monster.setAbilities(new Abilities(abilityList));
         return this;

@@ -71,9 +71,9 @@ public class Dungeon {
         }
         Random rand = new Random();
         double chanceValue = rand.nextDouble();
-        if (chanceValue < 0.60) {
+        if (chanceValue < 0.80) {
             return new MonsterRoom(floorNumber);
-        } else if (chanceValue < 0.80) {
+        } else if (chanceValue < 0.90) {
             return new TrapRoom(floorNumber);
         } else {
             return new TreasureRoom(floorNumber);
