@@ -35,6 +35,35 @@ public class MonsterFactory {
                 .getMonster();
     }
 
+    public Monster getBoss(int floor) {
+        MonsterBuilder monsterBuilder = null;
+        switch (floor) {
+            case 1:
+                monsterBuilder = new SkeletalChampionMonsterBuilder();
+                break;
+            case 2:
+                monsterBuilder = new HarpyMonsterBuilder();
+                break;
+            case 3:
+                monsterBuilder = new SphinxMonsterBuilder();
+                break;
+            case 4:
+                monsterBuilder = new HurricaneElementalMonsterBuilder();
+                break;
+            case 5:
+                monsterBuilder = new ValthraxMonsterBuilder();
+                break;
+        }
+        return monsterBuilder
+                .buildName()
+                .buildHealth()
+                .buildCombatStats()
+                .buildAbilities()
+                .buildExperience()
+                .buildGold()
+                .getMonster();
+    }
+
     private List<MonsterBuilder> getFloorOneMonsters() {
         List<MonsterBuilder> monsters = new ArrayList();
         monsters.add(new GoblinMonsterBuilder());
