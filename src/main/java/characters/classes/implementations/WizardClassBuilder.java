@@ -48,6 +48,12 @@ public class WizardClassBuilder implements CharacterClassBuilder {
     }
 
     @Override
+    public CharacterClassBuilder buildCombatStatsPerLevel() {
+        characterClass.setCombatStatsPerLevel(new CombatStats(8, 8, 14, 10, 0));
+        return this;
+    }
+
+    @Override
     public CharacterClassBuilder buildStartingAbilities() {
         Ability attack = new Ability("Attack");
         attack.addAction((user, opponent) -> {
@@ -59,7 +65,9 @@ public class WizardClassBuilder implements CharacterClassBuilder {
         startingAbilities.add(attack);
 
         Ability defend = new Ability("Defend");
-        defend.addAction((user, opponent) -> { user.getCombatStats().getStat(CombatStatType.DEFENSE)
+        defend.addAction((user, opponent) -> {
+            user.getCombatStats()
+            .getStat(CombatStatType.DEFENSE)
                 .addModifier(new MultiplicativeModifier(2.0, 1));
         });
         startingAbilities.add(defend);
@@ -70,10 +78,10 @@ public class WizardClassBuilder implements CharacterClassBuilder {
         magicMissiles.addAction((user, opponent) -> {
             System.out.println(user.getName() + " spent " + manaCost + " mana.");
             System.out.println(user.getName() + " " + user.getPrimaryResource().toString());
-            int dartDamage = (int)(user.getCombatStats().getStat(CombatStatType.MAGIC_ATTACK).getValue() * damageModifier);
             for (int i = 0; i < 3; i++) {
                 int damage = Ability.calculateDamage(
-                        (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * damageModifier),
+                        (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue()
+                                * damageModifier),
                         opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
                 opponent.getHealth().modifyCurrentValue(-damage);
                 System.out.println(opponent.getName() + " took " + damage + " damage.");

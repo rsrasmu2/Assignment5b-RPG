@@ -13,6 +13,10 @@ public class Town {
 
     private Player player;
 
+    /**
+     * Creates a new Town instance.
+     * @param player the player character.
+     */
     public Town(Player player) {
         this.player = player;
         dungeon = new Dungeon();
@@ -20,6 +24,11 @@ public class Town {
         shop = new Shop();
     }
 
+    /**
+     * Enters the town, enable the player to go to the Dungeon, Rest, Shop, or Quit.
+     * @param reader the BufferedReader being used.
+     * @throws IOException the BufferedReader's IOException.
+     */
     public void enter(BufferedReader reader) throws IOException {
         while (true) {
             System.out.println("You enter a peaceful town.");
@@ -30,9 +39,12 @@ public class Town {
             System.out.println("4. Quit");
 
             String input = reader.readLine();
+            if (input == null) {
+                throw new IOException("Null input");
+            }
             switch (input) {
                 case "1":
-                    Dungeon dungeon = new Dungeon();
+                    dungeon = new Dungeon();
                     dungeon.begin(player, reader);
                     break;
                 case "2":

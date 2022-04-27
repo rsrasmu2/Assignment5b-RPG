@@ -12,6 +12,10 @@ public class PowerPotion extends Consumable {
         super("Power Potion", 25, 1);
     }
 
+    /**
+     * Uses the Power Potion, granting INCREASE_AMOUNT magic attack.
+     * @param player the player using the potion.
+     */
     public void use(Player player) {
         super.use(player);
         player.getCombatStats().getStat(CombatStatType.MAGIC_ATTACK)

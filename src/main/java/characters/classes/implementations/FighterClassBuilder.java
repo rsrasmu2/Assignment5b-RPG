@@ -43,7 +43,13 @@ public class FighterClassBuilder implements CharacterClassBuilder {
 
     @Override
     public CharacterClassBuilder buildHealthPerLevel() {
-        characterClass.setHealthPerLevel(10);
+        characterClass.setHealthPerLevel(20);
+        return this;
+    }
+
+    @Override
+    public CharacterClassBuilder buildCombatStatsPerLevel() {
+        characterClass.setCombatStatsPerLevel(new CombatStats(10, 12, 4, 7, 0));
         return this;
     }
 
@@ -65,7 +71,9 @@ public class FighterClassBuilder implements CharacterClassBuilder {
         startingAbilities.add(attack);
 
         Ability defend = new Ability("Defend");
-        defend.addAction((user, opponent) -> { user.getCombatStats().getStat(CombatStatType.DEFENSE)
+        defend.addAction((user, opponent) -> {
+            user.getCombatStats()
+            .getStat(CombatStatType.DEFENSE)
                 .addModifier(new MultiplicativeModifier(2.0, 1));
             System.out.println(user.getName() + " entered a defensive stance.");
         });
@@ -76,7 +84,8 @@ public class FighterClassBuilder implements CharacterClassBuilder {
         Ability powerAttack = new Ability("PowerAttack", rageCost);
         powerAttack.addAction((user, opponent) -> {
             int damage = Ability.calculateDamage(
-                (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * damageModifier),
+                (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue()
+                    * damageModifier),
                 opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
             opponent.getHealth().modifyCurrentValue(-damage);
             System.out.println(user.getName() + " spent " + rageCost + " rage.");

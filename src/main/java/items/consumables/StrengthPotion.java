@@ -12,6 +12,10 @@ public class StrengthPotion extends Consumable {
         super("Strength Potion", 25, 1);
     }
 
+    /**
+     * Uses the Power Potion, granting INCREASE_AMOUNT attack.
+     * @param player the player using the potion.
+     */
     public void use(Player player) {
         super.use(player);
         player.getCombatStats().getStat(CombatStatType.ATTACK)

@@ -6,12 +6,13 @@ import combat.abilities.Ability;
 
 public class AttackAbility extends Ability {
     /**
-     * Creates a new AttackAbility
+     * Creates a new Attack Ability.
      */
     public AttackAbility() {
         super("Attack");
         addAction(((user, opponent) -> {
-            int damage = Combat.calculateDamageRange(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue());
+            int damage = Combat.calculateDamageRange(user.getCombatStats()
+                    .getStat(CombatStatType.ATTACK).getValue());
             damage -= opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue();
             damage = Math.max(0, damage);
             opponent.getHealth().modifyCurrentValue(-damage);

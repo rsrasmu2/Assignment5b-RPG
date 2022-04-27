@@ -17,6 +17,9 @@ public class Tavern implements TownBuilding {
             System.out.println("2. Leave.");
             System.out.println("You have " + player.getInventory().getGold() + " gold.");
             String input = reader.readLine();
+            if (input == null) {
+                throw new IOException("Null input");
+            }
             switch (input) {
                 case "1":
                     if (player.getInventory().getGold() < REST_COST) {

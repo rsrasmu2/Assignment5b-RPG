@@ -25,6 +25,11 @@ public class Consumables {
         return consumables;
     }
 
+    /**
+     * Uses the consumable.
+     * @param player the player character.
+     * @param index the index of the consumable.
+     */
     public void use(Player player, int index) {
         Consumable consumable = consumables.get(index);
         consumable.use(player);
@@ -33,6 +38,10 @@ public class Consumables {
         }
     }
 
+    /**
+     * Returns a formatted string of the inventory.
+     * @return a formatted string of the inventory.
+     */
     public String toString() {
         String ret = "Consumables:\n";
         for (Consumable consumable :  consumables) {

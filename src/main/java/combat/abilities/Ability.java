@@ -12,12 +12,21 @@ public class Ability {
     int cost;
     private List<AbilityAction> actions;
 
+    /**
+     * Creates a new Ability with no cost.
+     * @param name the name of the ability.
+     */
     public Ability(String name) {
         this.name = name;
         actions = new ArrayList();
         cost = 0;
     }
 
+    /**
+     * Creates a new Ability.
+     * @param name the name of the ability.
+     * @param cost the CharacterResource cost of the ability.
+     */
     public Ability(String name, int cost) {
         this.name = name;
         actions = new ArrayList();

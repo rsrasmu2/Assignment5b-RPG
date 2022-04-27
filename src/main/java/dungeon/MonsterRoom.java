@@ -16,6 +16,12 @@ public class MonsterRoom extends Room {
         monster = new MonsterFactory().getMonster(getFloor());
     }
 
+    /**
+     * Places the player in the room.
+     * @param player the player character.
+     * @param reader the BufferedReader being used.
+     * @throws IOException the IOException throw by the BufferedReader.
+     */
     public void enter(Player player, BufferedReader reader) throws IOException {
         System.out.println("In this room you find a " + monster.getName() + "!");
         Combat combat = new Combat(player, monster);

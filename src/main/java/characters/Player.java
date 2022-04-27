@@ -6,6 +6,7 @@ import characters.levels.Level;
 import characters.levels.LevelObserver;
 import characters.races.Race;
 import characters.resources.CharacterResource;
+import characters.stats.CombatStatType;
 import characters.stats.CombatStats;
 import combat.abilities.Abilities;
 import combat.abilities.Ability;
@@ -98,11 +99,11 @@ public class Player implements Targettable, Equipper, LevelObserver {
         while (true) {
             System.out.println("Choose your ability:");
             for (int i = 0; i < abilities.getAbilities().size(); i++) {
-                System.out.println(i + ". " + abilities.getAbilities().get(i));
+                System.out.println(i + 1 + ". " + abilities.getAbilities().get(i));
             }
             for (int i = 0; i < inventory.getConsumables().getConsumables().size(); i++) {
-                System.out.println(abilities.getAbilities().size() + i + ". "
-                + getInventory().getConsumables().getConsumables().get(i).getName());
+                System.out.println(abilities.getAbilities().size() + i + 1 + ". "
+                    + getInventory().getConsumables().getConsumables().get(i).getName());
             }
 
             String input = reader.readLine();
@@ -113,11 +114,12 @@ public class Player implements Targettable, Equipper, LevelObserver {
                 System.out.println("Select the number of the ability you wish to use.");
                 continue;
             }
-            if (intInput < 0 || intInput >= abilities.getAbilities().size() + inventory.getConsumables().getConsumables().size()) {
+            if (intInput < 0 || intInput >= abilities.getAbilities().size()
+                    + inventory.getConsumables().getConsumables().size()) {
                 System.out.println("Select the number of the ability you wish to use.");
                 continue;
             }
-            if (intInput < abilities.getAbilities().size()) {
+            if (intInput <= abilities.getAbilities().size()) {
                 Ability ability = abilities.getAbilities().get(intInput - 1);
                 if (!ability.canExecute(this)) {
                     System.out.println("Not enough " + getPrimaryResource().getName() + ".");
@@ -139,8 +141,35 @@ public class Player implements Targettable, Equipper, LevelObserver {
 
     @Override
     public void leveledUp(int newLevel) {
+        System.out.println("Level up!");
         health.modifyMaxValue(characterClass.getHealthPerLevel());
         health.modifyCurrentValue(characterClass.getHealthPerLevel());
+        System.out.println("Health increased by " + characterClass.getHealthPerLevel());
+        combatStats.getStat(CombatStatType.ATTACK)
+                .modifyBaseValue(characterClass.getCombatStatsPerLevel()
+                        .getStat(CombatStatType.ATTACK).getValue());
+        System.out.println("Attack increased by " + characterClass.getCombatStatsPerLevel()
+                .getStat(CombatStatType.ATTACK).getValue());
+        combatStats.getStat(CombatStatType.DEFENSE)
+                .modifyBaseValue(characterClass.getCombatStatsPerLevel()
+                        .getStat(CombatStatType.DEFENSE).getValue());
+        System.out.println("Defense increased by " + characterClass.getCombatStatsPerLevel()
+                .getStat(CombatStatType.DEFENSE).getValue());
+        combatStats.getStat(CombatStatType.MAGIC_ATTACK)
+                .modifyBaseValue(characterClass.getCombatStatsPerLevel()
+                        .getStat(CombatStatType.MAGIC_ATTACK).getValue());
+        System.out.println("Magic Attack increased by " + characterClass.getCombatStatsPerLevel()
+                .getStat(CombatStatType.MAGIC_ATTACK).getValue());
+        combatStats.getStat(CombatStatType.MAGIC_DEFENSE)
+                .modifyBaseValue(characterClass.getCombatStatsPerLevel()
+                        .getStat(CombatStatType.MAGIC_DEFENSE).getValue());
+        System.out.println("Magic Defense increased by " + characterClass.getCombatStatsPerLevel()
+                .getStat(CombatStatType.MAGIC_DEFENSE).getValue());
+        combatStats.getStat(CombatStatType.EVASION)
+                .modifyBaseValue(characterClass.getCombatStatsPerLevel()
+                        .getStat(CombatStatType.EVASION).getValue());
+        System.out.println("Evasion increased by " + characterClass.getCombatStatsPerLevel()
+                .getStat(CombatStatType.EVASION).getValue());
     }
 
     @Override

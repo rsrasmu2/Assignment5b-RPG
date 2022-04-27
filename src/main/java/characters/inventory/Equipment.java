@@ -13,6 +13,10 @@ public class Equipment {
         this.equipper = equipper;
     }
 
+    /**
+     * Equips the given Equippable.
+     * @param equippable the Equippable to equip.
+     */
     public void equip(Equippable equippable) {
         switch (equippable.getSlot()) {
             case WEAPON:
@@ -34,6 +38,10 @@ public class Equipment {
         }
     }
 
+    /**
+     * Unequips specified Equippable.
+     * @param slot the slot to unequip.
+     */
     public void unequip(EquipmentSlot slot) {
         switch (slot) {
             case WEAPON:
@@ -46,9 +54,16 @@ public class Equipment {
                     armor.unequip(equipper);
                 }
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + slot);
         }
     }
 
+    /**
+     * Gets the currently equipped Equippable.
+     * @param slot the slot of the Equippable.
+     * @return the equipped Equippable.
+     */
     public Equippable getEquippable(EquipmentSlot slot) {
         switch (slot) {
             case WEAPON:
@@ -60,6 +75,10 @@ public class Equipment {
         }
     }
 
+    /**
+     * Returns a formatted string of the Equipment.
+     * @return a formatted string of the Equipment.
+     */
     public String toString() {
         String ret = "";
         if (weapon != null) {

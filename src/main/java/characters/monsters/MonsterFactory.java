@@ -1,5 +1,6 @@
 package characters.monsters;
 
+// There are far too many monsters to list out individually
 import characters.monsters.implementations.*;
 
 import java.util.ArrayList;
@@ -12,6 +13,9 @@ public class MonsterFactory {
 
     public static final int FLOORS = 5;
 
+    /**
+     * Creates a new Factory for Monster creation.
+     */
     public MonsterFactory() {
         rand = new Random();
         monstersPerLevel = new ArrayList[FLOORS];
@@ -22,6 +26,11 @@ public class MonsterFactory {
         monstersPerLevel[4] = getFloorFiveMonsters();
     }
 
+    /**
+     * Returns a random monster appropriate for the floor.
+     * @param floor the floor the monster is on.
+     * @return the monster.
+     */
     public Monster getMonster(int floor) {
         MonsterBuilder monsterBuilder = monstersPerLevel[floor - 1]
                 .get(rand.nextInt(monstersPerLevel[floor - 1].size()));
@@ -35,6 +44,11 @@ public class MonsterFactory {
                 .getMonster();
     }
 
+    /**
+     * Returns the boss monster guarding the given floor.
+     * @param floor the floor that the boss is on.
+     * @return the boss.
+     */
     public Monster getBoss(int floor) {
         MonsterBuilder monsterBuilder = null;
         switch (floor) {
@@ -53,7 +67,10 @@ public class MonsterFactory {
             case 5:
                 monsterBuilder = new ValthraxMonsterBuilder();
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + floor);
         }
+
         return monsterBuilder
                 .buildName()
                 .buildHealth()

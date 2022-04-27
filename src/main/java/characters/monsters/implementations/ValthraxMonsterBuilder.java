@@ -6,7 +6,11 @@ import characters.resources.CharacterResource;
 import characters.stats.CombatStats;
 import combat.abilities.Abilities;
 import combat.abilities.Ability;
-import combat.abilities.monster.*;
+import combat.abilities.monster.AttackAbility;
+import combat.abilities.monster.DeathTouchAbility;
+import combat.abilities.monster.DefendAbility;
+import combat.abilities.monster.FireBreathAbility;
+import combat.abilities.monster.NoxiousBreathAbility;
 
 import java.util.ArrayList;
 import java.util.List;

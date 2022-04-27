@@ -8,7 +8,7 @@ public class Level {
     private int currentExperience;
     private int experienceToNextLevel;
 
-    private static final int STARTING_EXPERIENCE = 1000;
+    private static final int STARTING_EXPERIENCE = 100;
     private static final double EXPERIENCE_MULTIPLIER = 1.2;
 
     private List<LevelObserver> observers;

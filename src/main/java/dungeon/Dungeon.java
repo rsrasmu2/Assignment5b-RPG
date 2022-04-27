@@ -20,9 +20,15 @@ public class Dungeon {
         roomNumber = 1;
     }
 
+    /**
+     * Begins the dungeon escapade.
+     * @param player the player character.
+     * @param reader the BufferedReader being used.
+     * @throws IOException the BufferedReader IO exception.
+     */
     public void begin(Player player, BufferedReader reader) throws IOException {
         while (true) {
-            generateRoom();
+            currentRoom = generateRoom();
             currentRoom.enter(player, reader);
             if (player.getHealth().getCurrentValue() == 0) {
                 System.out.println("Returning to town...\n----------");
@@ -30,6 +36,9 @@ public class Dungeon {
             }
             System.out.println("1. Continue\n2. Return to town");
             String input = reader.readLine();
+            if (input == null) {
+                throw new IOException("Null input");
+            }
             if (input.equals("1")) {
                 roomNumber++;
                 if (roomNumber == ROOMS_PER_FLOOR + 1) {
@@ -53,15 +62,21 @@ public class Dungeon {
         return currentRoom;
     }
 
-    private void generateRoom() {
+    /**
+     * Sets the current room to a newly generated room.
+     */
+    private Room generateRoom() {
+        if (roomNumber == 10) {
+            return new BossRoom(floorNumber);
+        }
         Random rand = new Random();
         double chanceValue = rand.nextDouble();
         if (chanceValue < 0.60) {
-            currentRoom = new MonsterRoom(floorNumber);
+            return new MonsterRoom(floorNumber);
         } else if (chanceValue < 0.80) {
-            currentRoom = new TrapRoom(floorNumber);
+            return new TrapRoom(floorNumber);
         } else {
-            currentRoom = new TreasureRoom(floorNumber);
+            return new TreasureRoom(floorNumber);
         }
     }
 }

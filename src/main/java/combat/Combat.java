@@ -92,6 +92,11 @@ public class Combat {
         return false;
     }
 
+    /**
+     * Calculates the damage done after applying randomness to it.
+     * @param damage the initial damage being dealt.
+     * @return the damage after randomness is applied.
+     */
     public static int calculateDamageRange(int damage) {
         Random rand = new Random();
         double min = damage * (1 - DAMAGE_RANGE);

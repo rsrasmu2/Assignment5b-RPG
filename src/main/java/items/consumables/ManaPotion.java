@@ -10,6 +10,10 @@ public class ManaPotion extends Consumable {
         super("Mana Potion", 15, 1);
     }
 
+    /**
+     * Uses the Mana Potion, resting for RESTORE_AMOUNT mana.
+     * @param player the player using the potion.
+     */
     public void use(Player player) {
         super.use(player);
         if (player.getPrimaryResource().getName().equals("Mana")) {

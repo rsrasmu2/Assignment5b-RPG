@@ -47,6 +47,12 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
     }
 
     @Override
+    public CharacterClassBuilder buildCombatStatsPerLevel() {
+        characterClass.setCombatStatsPerLevel(new CombatStats(12, 9, 6, 10, 1));
+        return this;
+    }
+
+    @Override
     public CharacterClassBuilder buildStartingAbilities() {
         int energyGeneration = 20;
 
@@ -78,7 +84,8 @@ public class ThiefClassBuilder implements CharacterClassBuilder {
         Ability sneakAttack = new Ability("Sneak Attack", energyCost);
         sneakAttack.addAction((user, opponent) -> {
             int damage = Ability.calculateDamage(
-                    (int)(user.getCombatStats().getStat(CombatStatType.ATTACK).getValue() * damageModifier),
+                    (int)(user.getCombatStats()
+                            .getStat(CombatStatType.ATTACK).getValue() * damageModifier),
                     opponent.getCombatStats().getStat(CombatStatType.DEFENSE).getValue());
             opponent.getHealth().modifyCurrentValue(-damage);
             System.out.println(user.getName() + " spent " + energyCost + " energy.");

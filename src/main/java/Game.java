@@ -4,43 +4,44 @@ import characters.classes.implementations.FighterClassBuilder;
 import characters.classes.implementations.ThiefClassBuilder;
 import characters.classes.implementations.WizardClassBuilder;
 import characters.inventory.EquipmentSlot;
-import characters.monsters.Monster;
-import characters.monsters.implementations.GoblinMonsterBuilder;
 import characters.races.Race;
 import characters.races.implementations.DwarfRaceBuilder;
 import characters.races.implementations.ElfRaceBuilder;
 import characters.races.implementations.HumanRaceBuilder;
 import characters.races.implementations.OrcRaceBuilder;
 import characters.stats.CombatStats;
-import combat.Combat;
 import combat.abilities.Abilities;
-import dungeon.Dungeon;
 import items.Consumable;
 import items.Equippable;
 import items.consumables.HealingPotion;
-import town.Town;
-
 import java.io.BufferedReader;
 import java.io.IOException;
+import town.Town;
 
 public class Game {
     private BufferedReader reader;
 
+    /**
+     * Creates a new Game instance.
+     * @param reader the BufferedReader to use.
+     */
     public Game(BufferedReader reader) {
         this.reader = reader;
     }
 
     /**
-     * Begins the game
-     * @throws IOException BufferReader exception
+     * Begins the game.
+     * @throws IOException BufferReader exception.
      */
     public void begin() throws IOException {
         Player player = createPlayer();
 
-        Equippable rustySword = new Equippable("Rusty Sword", 5, EquipmentSlot.WEAPON, 10, 0, 0, 0, 0);
+        Equippable rustySword = new Equippable("Rusty Sword", 5, EquipmentSlot.WEAPON,
+                10, 0, 0, 0, 0);
         player.getInventory().getEquipment().equip(rustySword);
 
-        Equippable clothShirt = new Equippable("Cloth Shirt", 5, EquipmentSlot.ARMOR, 0, 5, 0, 2, 0);
+        Equippable clothShirt = new Equippable("Cloth Shirt", 5, EquipmentSlot.ARMOR,
+                0, 5, 0, 2, 0);
         player.getInventory().getEquipment().equip(clothShirt);
 
         Consumable healingPotion = new HealingPotion();
@@ -135,7 +136,8 @@ public class Game {
      * @return The selected class.
      * @throws IOException based on player input.
      */
-    private CharacterClass selectClass(CombatStats combatStats, Race playerRace) throws IOException {
+    private CharacterClass selectClass(CombatStats combatStats, Race playerRace)
+            throws IOException {
         CharacterClass playerClass = null;
         while (true) {
             System.out.println("Enter your class:\n(F)ighter\n(T)hief\n(W)izard\n");
